@@ -69,17 +69,26 @@ from pathlib import Path
 import shutil
 import sh
 
-for proto in list(Path("../lnd/lnrpc").rglob("*.proto")):
+# TODO: these paths are messed up
+# TODO: annotations.proto
+for proto in list(Path("../../../loop/looprpc").rglob("*.proto")):
     shutil.copy(proto, Path.cwd())
 
-protos = list(Path(".").glob("*.proto"))
+protos = list(Path(".").joinpath("loopgrpc/compiled/").glob("*.proto"))
+
+args = [
+    "-m",
+    "grpc_tools.protoc",
+    "--proto_path=loopgrpc/compiled/googleapis:.",
+    "--python_out=.",
+    "--grpc_python_out=.",
+]
 
 for protofile in protos:
-    try:
-        sh.python("-m", "grpc_tools.protoc", "--proto_path=.", "--python_out=.", "--grpc_python_out=.", str(protofile))
-        protos.remove(protofile)
-    except Exception as e:
-        print(f"Error in proto: {protofile}")
+        args.append(str(protofile) )
+
+# Generate the compiled protofiles
+sh.python(args)
 ```
 
 Last Step:

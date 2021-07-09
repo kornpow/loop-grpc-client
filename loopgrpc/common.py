@@ -2,13 +2,9 @@ import binascii
 import platform
 import os
 import grpc
-from poolgrpc.compiled import (
-    trader_pb2 as traderrpc,
-    trader_pb2_grpc as traderstub,
-    auctioneer_pb2 as auctioneerrpc,
-    auctioneer_pb2_grpc as auctioneerstub,
-    hashmail_pb2 as hashmailrpc,
-    hashmail_pb2_grpc as hashmailstub,
+from loopgrpc.compiled import (
+    client_pb2 as looprpc,
+    client_pb2_grpc as clientstub,
 )
 
 system = platform.system().lower()
@@ -73,7 +69,7 @@ def get_cert(filepath=None):
     return cert
 
 
-def get_macaroon(admin=False, network="mainnet", filepath=None):
+def get_macaroon(network="mainnet", filepath=None):
     """Read and decode macaroon from file
 
     The macaroon is decoded into a hex string and returned.
@@ -92,7 +88,7 @@ def get_macaroon(admin=False, network="mainnet", filepath=None):
 
 
 def generate_credentials(cert, macaroon):
-    """Create composite channel credentials using cert and macaroon metatdata"""
+    """Create composite channel credentials using cert and macaroon metadata"""
     # create cert credentials from the tls.cert file
     cert_creds = grpc.ssl_channel_credentials(cert)
 
@@ -122,30 +118,25 @@ class BaseClient(object):
         self,
         ip_address="127.0.0.1:12010",
         network="mainnet",
-        admin=False,
         cert=None,
         cert_filepath=None,
         macaroon=None,
         macaroon_filepath=None,
     ):
-        if cert is None:
-            cert = get_cert(cert_filepath)
-
         if macaroon is None:
             macaroon = get_macaroon(
-                admin=admin, network=network, filepath=macaroon_filepath
+                network=network, filepath=macaroon_filepath
             )
 
         if cert is None:
             cert = get_cert(cert_filepath)
 
-        self.admin = admin
         self.network = network
         self._credentials = generate_credentials(cert, macaroon)
         self.ip_address = ip_address
 
     @property
-    def _trader_stub(self):
+    def _client_stub(self):
         """Create a ln_stub dynamically to ensure channel freshness
 
         If we make a call to the Lightning RPC service when the wallet
@@ -158,22 +149,5 @@ class BaseClient(object):
             self._credentials,
             options=[("grpc.max_receive_message_length", 1024 * 1024 * 50)],
         )
-        return traderstub.TraderStub(channel)
+        return clientstub.SwapClientStub(channel)
 
-
-# traderrpc
-# traderstub
-
-#     @property
-#     def _router_stub(self):
-#         """Create a ln_stub dynamically to ensure channel freshness
-
-#         If we make a call to the Lightning RPC service when the wallet
-#         is locked or the server is down we will get back an RPCError with
-#         StatusCode.UNAVAILABLE which will make the channel unusable.
-#         To ensure the channel is usable we create a new one for each request.
-#         """
-#         channel = self.grpc_module.secure_channel(
-#             self.ip_address, self._credentials, options=[('grpc.max_receive_message_length', 1024*1024*50)]
-#         )
-#         return routerrpc.RouterStub(channel)
