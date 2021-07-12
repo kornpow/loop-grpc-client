@@ -71,8 +71,8 @@ import sh
 
 # TODO: these paths are messed up
 # TODO: annotations.proto
-for proto in list(Path("../../../loop/looprpc").rglob("*.proto")):
-    shutil.copy(proto, Path.cwd())
+for proto in list(Path("../loop/looprpc").rglob("*.proto")):
+    shutil.copy(proto, Path.cwd().joinpath("loopgrpc/compiled"))
 
 protos = list(Path(".").joinpath("loopgrpc/compiled/").glob("*.proto"))
 
