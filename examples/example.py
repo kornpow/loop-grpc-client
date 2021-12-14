@@ -21,7 +21,7 @@ loop = LoopClient(
 	cert_filepath=tls
 )
 
-
+loop.list_swaps()
 
 
 from pathlib import Path
@@ -42,8 +42,13 @@ mac = str(credential_path.joinpath("loop.macaroon").absolute())
 tls = str(credential_path.joinpath("tls.cert").absolute())
 
 
+print(f"Using Macaroon: {mac}")
+print(f"Using TLS Cert: {tls}")
+
 loop = LoopClient(
-	"127.0.0.1:38865",
+	"127.0.0.1:11010",
 	macaroon_filepath=mac,
 	cert_filepath=tls
 )
+
+loop.list_swaps()

@@ -63,7 +63,6 @@ def get_cert(filepath=None):
     Note: tls files need to be read in byte mode as of grpc 1.8.2
           https://github.com/grpc/grpc/issues/13866
     """
-    filepath = filepath or TLS_FILEPATH
     with open(filepath, "rb") as f:
         cert = f.read()
     return cert
@@ -74,13 +73,13 @@ def get_macaroon(network="mainnet", filepath=None):
 
     The macaroon is decoded into a hex string and returned.
     """
-    if filepath is None:
-        if admin:
-            filepath = os.path.expanduser(ADMIN_MACAROON_BASE_FILEPATH.format(network))
-        else:
-            filepath = os.path.expanduser(
-                READ_ONLY_MACAROON_BASE_FILEPATH.format(network)
-            )
+    # if filepath is None:
+    #     if admin:
+    #         filepath = os.path.expanduser(ADMIN_MACAROON_BASE_FILEPATH.format(network))
+    #     else:
+    #         filepath = os.path.expanduser(
+    #             READ_ONLY_MACAROON_BASE_FILEPATH.format(network)
+    #         )
 
     with open(filepath, "rb") as f:
         macaroon_bytes = f.read()
@@ -147,7 +146,7 @@ class BaseClient(object):
         channel = self.grpc_module.secure_channel(
             self.ip_address,
             self._credentials,
-            options=[("grpc.max_receive_message_length", 1024 * 1024 * 50)],
+            options=[("grpc.max_receive_message_length", 1024 * 1024)],
         )
         return clientstub.SwapClientStub(channel)
 

@@ -17,9 +17,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='loopgrpc/compiled/debug.proto',
   package='looprpc',
   syntax='proto3',
-  serialized_options=None,
+  serialized_options=b'Z%github.com/lightninglabs/loop/looprpc',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1dloopgrpc/compiled/debug.proto\x12\x07looprpc\"\x16\n\x14\x46orceAutoLoopRequest\"\x17\n\x15\x46orceAutoLoopResponse2Y\n\x05\x44\x65\x62ug\x12P\n\rForceAutoLoop\x12\x1d.looprpc.ForceAutoLoopRequest\x1a\x1e.looprpc.ForceAutoLoopResponse\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x1dloopgrpc/compiled/debug.proto\x12\x07looprpc\"\x16\n\x14\x46orceAutoLoopRequest\"\x17\n\x15\x46orceAutoLoopResponse2W\n\x05\x44\x65\x62ug\x12N\n\rForceAutoLoop\x12\x1d.looprpc.ForceAutoLoopRequest\x1a\x1e.looprpc.ForceAutoLoopResponseB\'Z%github.com/lightninglabs/loop/looprpcb\x06proto3'
 )
 
 
@@ -93,6 +93,7 @@ ForceAutoLoopResponse = _reflection.GeneratedProtocolMessageType('ForceAutoLoopR
 _sym_db.RegisterMessage(ForceAutoLoopResponse)
 
 
+DESCRIPTOR._options = None
 
 _DEBUG = _descriptor.ServiceDescriptor(
   name='Debug',
@@ -102,7 +103,7 @@ _DEBUG = _descriptor.ServiceDescriptor(
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
   serialized_start=91,
-  serialized_end=180,
+  serialized_end=178,
   methods=[
   _descriptor.MethodDescriptor(
     name='ForceAutoLoop',
