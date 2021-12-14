@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "loop-grpc-client"
-version = "0.0.4"
+version = "0.0.5"
 description = "An rpc client for LL Loop (Add/Remove liquidity from channels)"
 authors = ["Kornpow <test@email.com>"]
 readme = "README.md"
@@ -8,6 +8,7 @@ license = "MIT"
 packages = [
     { include = "loopgrpc" },
 ]
+exclude = ["loopgrpc/googleapis/*"]
 
 [tool.poetry.dependencies]
 python = ">3.6"

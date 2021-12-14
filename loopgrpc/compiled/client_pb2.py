@@ -12,6 +12,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from loopgrpc.compiled import common_pb2 as loopgrpc_dot_compiled_dot_common__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -20,8 +21,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z%github.com/lightninglabs/loop/looprpc',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1eloopgrpc/compiled/client.proto\x12\x07looprpc\"\xe3\x02\n\x0eLoopOutRequest\x12\x0b\n\x03\x61mt\x18\x01 \x01(\x03\x12\x0c\n\x04\x64\x65st\x18\x02 \x01(\t\x12\x1c\n\x14max_swap_routing_fee\x18\x03 \x01(\x03\x12\x1e\n\x16max_prepay_routing_fee\x18\x04 \x01(\x03\x12\x14\n\x0cmax_swap_fee\x18\x05 \x01(\x03\x12\x16\n\x0emax_prepay_amt\x18\x06 \x01(\x03\x12\x15\n\rmax_miner_fee\x18\x07 \x01(\x03\x12\x1c\n\x10loop_out_channel\x18\x08 \x01(\x04\x42\x02\x18\x01\x12\x19\n\x11outgoing_chan_set\x18\x0b \x03(\x04\x12\x19\n\x11sweep_conf_target\x18\t \x01(\x05\x12\x1a\n\x12htlc_confirmations\x18\r \x01(\x05\x12!\n\x19swap_publication_deadline\x18\n \x01(\x04\x12\r\n\x05label\x18\x0c \x01(\t\x12\x11\n\tinitiator\x18\x0e \x01(\t\"\xae\x01\n\rLoopInRequest\x12\x0b\n\x03\x61mt\x18\x01 \x01(\x03\x12\x14\n\x0cmax_swap_fee\x18\x02 \x01(\x03\x12\x15\n\rmax_miner_fee\x18\x03 \x01(\x03\x12\x10\n\x08last_hop\x18\x04 \x01(\x0c\x12\x15\n\rexternal_htlc\x18\x05 \x01(\x08\x12\x18\n\x10htlc_conf_target\x18\x06 \x01(\x05\x12\r\n\x05label\x18\x07 \x01(\t\x12\x11\n\tinitiator\x18\x08 \x01(\t\"\x9b\x01\n\x0cSwapResponse\x12\x0e\n\x02id\x18\x01 \x01(\tB\x02\x18\x01\x12\x10\n\x08id_bytes\x18\x03 \x01(\x0c\x12\x18\n\x0chtlc_address\x18\x02 \x01(\tB\x02\x18\x01\x12\x1b\n\x13htlc_address_np2wsh\x18\x04 \x01(\t\x12\x1a\n\x12htlc_address_p2wsh\x18\x05 \x01(\t\x12\x16\n\x0eserver_message\x18\x06 \x01(\t\"\x10\n\x0eMonitorRequest\"\x86\x03\n\nSwapStatus\x12\x0b\n\x03\x61mt\x18\x01 \x01(\x03\x12\x0e\n\x02id\x18\x02 \x01(\tB\x02\x18\x01\x12\x10\n\x08id_bytes\x18\x0b \x01(\x0c\x12\x1f\n\x04type\x18\x03 \x01(\x0e\x32\x11.looprpc.SwapType\x12!\n\x05state\x18\x04 \x01(\x0e\x32\x12.looprpc.SwapState\x12.\n\x0e\x66\x61ilure_reason\x18\x0e \x01(\x0e\x32\x16.looprpc.FailureReason\x12\x17\n\x0finitiation_time\x18\x05 \x01(\x03\x12\x18\n\x10last_update_time\x18\x06 \x01(\x03\x12\x18\n\x0chtlc_address\x18\x07 \x01(\tB\x02\x18\x01\x12\x1a\n\x12htlc_address_p2wsh\x18\x0c \x01(\t\x12\x1b\n\x13htlc_address_np2wsh\x18\r \x01(\t\x12\x13\n\x0b\x63ost_server\x18\x08 \x01(\x03\x12\x14\n\x0c\x63ost_onchain\x18\t \x01(\x03\x12\x15\n\rcost_offchain\x18\n \x01(\x03\x12\r\n\x05label\x18\x0f \x01(\t\"\x12\n\x10ListSwapsRequest\"7\n\x11ListSwapsResponse\x12\"\n\x05swaps\x18\x01 \x03(\x0b\x32\x13.looprpc.SwapStatus\"\x1d\n\x0fSwapInfoRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\"\x0e\n\x0cTermsRequest\"a\n\x0fInTermsResponse\x12\x17\n\x0fmin_swap_amount\x18\x05 \x01(\x03\x12\x17\n\x0fmax_swap_amount\x18\x06 \x01(\x03J\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03J\x04\x08\x03\x10\x04J\x04\x08\x04\x10\x05J\x04\x08\x07\x10\x08\"\x92\x01\n\x10OutTermsResponse\x12\x17\n\x0fmin_swap_amount\x18\x05 \x01(\x03\x12\x17\n\x0fmax_swap_amount\x18\x06 \x01(\x03\x12\x16\n\x0emin_cltv_delta\x18\x08 \x01(\x05\x12\x16\n\x0emax_cltv_delta\x18\t \x01(\x05J\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03J\x04\x08\x03\x10\x04J\x04\x08\x04\x10\x05J\x04\x08\x07\x10\x08\"j\n\x0cQuoteRequest\x12\x0b\n\x03\x61mt\x18\x01 \x01(\x03\x12\x13\n\x0b\x63onf_target\x18\x02 \x01(\x05\x12\x15\n\rexternal_htlc\x18\x03 \x01(\x08\x12!\n\x19swap_publication_deadline\x18\x04 \x01(\x04\"z\n\x0fInQuoteResponse\x12\x14\n\x0cswap_fee_sat\x18\x01 \x01(\x03\x12\x1c\n\x14htlc_publish_fee_sat\x18\x03 \x01(\x03\x12\x12\n\ncltv_delta\x18\x05 \x01(\x05\x12\x13\n\x0b\x63onf_target\x18\x06 \x01(\x05J\x04\x08\x02\x10\x03J\x04\x08\x04\x10\x05\"\xa0\x01\n\x10OutQuoteResponse\x12\x14\n\x0cswap_fee_sat\x18\x01 \x01(\x03\x12\x16\n\x0eprepay_amt_sat\x18\x02 \x01(\x03\x12\x1a\n\x12htlc_sweep_fee_sat\x18\x03 \x01(\x03\x12\x19\n\x11swap_payment_dest\x18\x04 \x01(\x0c\x12\x12\n\ncltv_delta\x18\x05 \x01(\x05\x12\x13\n\x0b\x63onf_target\x18\x06 \x01(\x05\"\x0f\n\rTokensRequest\"4\n\x0eTokensResponse\x12\"\n\x06tokens\x18\x01 \x03(\x0b\x32\x12.looprpc.LsatToken\"\xc8\x01\n\tLsatToken\x12\x15\n\rbase_macaroon\x18\x01 \x01(\x0c\x12\x14\n\x0cpayment_hash\x18\x02 \x01(\x0c\x12\x18\n\x10payment_preimage\x18\x03 \x01(\x0c\x12\x18\n\x10\x61mount_paid_msat\x18\x04 \x01(\x03\x12\x1d\n\x15routing_fee_paid_msat\x18\x05 \x01(\x03\x12\x14\n\x0ctime_created\x18\x06 \x01(\x03\x12\x0f\n\x07\x65xpired\x18\x07 \x01(\x08\x12\x14\n\x0cstorage_name\x18\x08 \x01(\t\"\x1b\n\x19GetLiquidityParamsRequest\"\xd9\x03\n\x13LiquidityParameters\x12%\n\x05rules\x18\x01 \x03(\x0b\x32\x16.looprpc.LiquidityRule\x12\x0f\n\x07\x66\x65\x65_ppm\x18\x10 \x01(\x04\x12$\n\x1csweep_fee_rate_sat_per_vbyte\x18\x02 \x01(\x04\x12\x18\n\x10max_swap_fee_ppm\x18\x03 \x01(\x04\x12\x1b\n\x13max_routing_fee_ppm\x18\x04 \x01(\x04\x12\"\n\x1amax_prepay_routing_fee_ppm\x18\x05 \x01(\x04\x12\x16\n\x0emax_prepay_sat\x18\x06 \x01(\x04\x12\x19\n\x11max_miner_fee_sat\x18\x07 \x01(\x04\x12\x19\n\x11sweep_conf_target\x18\x08 \x01(\x05\x12\x1b\n\x13\x66\x61ilure_backoff_sec\x18\t \x01(\x04\x12\x10\n\x08\x61utoloop\x18\n \x01(\x08\x12\x1b\n\x13\x61utoloop_budget_sat\x18\x0b \x01(\x04\x12!\n\x19\x61utoloop_budget_start_sec\x18\x0c \x01(\x04\x12\x1a\n\x12\x61uto_max_in_flight\x18\r \x01(\x04\x12\x17\n\x0fmin_swap_amount\x18\x0e \x01(\x04\x12\x17\n\x0fmax_swap_amount\x18\x0f \x01(\x04\"\x95\x01\n\rLiquidityRule\x12\x12\n\nchannel_id\x18\x01 \x01(\x04\x12\x0e\n\x06pubkey\x18\x05 \x01(\x0c\x12(\n\x04type\x18\x02 \x01(\x0e\x32\x1a.looprpc.LiquidityRuleType\x12\x1a\n\x12incoming_threshold\x18\x03 \x01(\r\x12\x1a\n\x12outgoing_threshold\x18\x04 \x01(\r\"M\n\x19SetLiquidityParamsRequest\x12\x30\n\nparameters\x18\x01 \x01(\x0b\x32\x1c.looprpc.LiquidityParameters\"\x1c\n\x1aSetLiquidityParamsResponse\"\x15\n\x13SuggestSwapsRequest\"W\n\x0c\x44isqualified\x12\x12\n\nchannel_id\x18\x01 \x01(\x04\x12\x0e\n\x06pubkey\x18\x03 \x01(\x0c\x12#\n\x06reason\x18\x02 \x01(\x0e\x32\x13.looprpc.AutoReason\"n\n\x14SuggestSwapsResponse\x12)\n\x08loop_out\x18\x01 \x03(\x0b\x32\x17.looprpc.LoopOutRequest\x12+\n\x0c\x64isqualified\x18\x02 \x03(\x0b\x32\x15.looprpc.Disqualified*%\n\x08SwapType\x12\x0c\n\x08LOOP_OUT\x10\x00\x12\x0b\n\x07LOOP_IN\x10\x01*s\n\tSwapState\x12\r\n\tINITIATED\x10\x00\x12\x15\n\x11PREIMAGE_REVEALED\x10\x01\x12\x12\n\x0eHTLC_PUBLISHED\x10\x02\x12\x0b\n\x07SUCCESS\x10\x03\x12\n\n\x06\x46\x41ILED\x10\x04\x12\x13\n\x0fINVOICE_SETTLED\x10\x05*\xed\x01\n\rFailureReason\x12\x17\n\x13\x46\x41ILURE_REASON_NONE\x10\x00\x12\x1b\n\x17\x46\x41ILURE_REASON_OFFCHAIN\x10\x01\x12\x1a\n\x16\x46\x41ILURE_REASON_TIMEOUT\x10\x02\x12 \n\x1c\x46\x41ILURE_REASON_SWEEP_TIMEOUT\x10\x03\x12%\n!FAILURE_REASON_INSUFFICIENT_VALUE\x10\x04\x12\x1c\n\x18\x46\x41ILURE_REASON_TEMPORARY\x10\x05\x12#\n\x1f\x46\x41ILURE_REASON_INCORRECT_AMOUNT\x10\x06*/\n\x11LiquidityRuleType\x12\x0b\n\x07UNKNOWN\x10\x00\x12\r\n\tTHRESHOLD\x10\x01*\xa6\x03\n\nAutoReason\x12\x17\n\x13\x41UTO_REASON_UNKNOWN\x10\x00\x12\"\n\x1e\x41UTO_REASON_BUDGET_NOT_STARTED\x10\x01\x12\x1a\n\x16\x41UTO_REASON_SWEEP_FEES\x10\x02\x12\x1e\n\x1a\x41UTO_REASON_BUDGET_ELAPSED\x10\x03\x12\x19\n\x15\x41UTO_REASON_IN_FLIGHT\x10\x04\x12\x18\n\x14\x41UTO_REASON_SWAP_FEE\x10\x05\x12\x19\n\x15\x41UTO_REASON_MINER_FEE\x10\x06\x12\x16\n\x12\x41UTO_REASON_PREPAY\x10\x07\x12\x1f\n\x1b\x41UTO_REASON_FAILURE_BACKOFF\x10\x08\x12\x18\n\x14\x41UTO_REASON_LOOP_OUT\x10\t\x12\x17\n\x13\x41UTO_REASON_LOOP_IN\x10\n\x12\x1c\n\x18\x41UTO_REASON_LIQUIDITY_OK\x10\x0b\x12#\n\x1f\x41UTO_REASON_BUDGET_INSUFFICIENT\x10\x0c\x12 \n\x1c\x41UTO_REASON_FEE_INSUFFICIENT\x10\r2\x8a\x07\n\nSwapClient\x12\x39\n\x07LoopOut\x12\x17.looprpc.LoopOutRequest\x1a\x15.looprpc.SwapResponse\x12\x37\n\x06LoopIn\x12\x16.looprpc.LoopInRequest\x1a\x15.looprpc.SwapResponse\x12\x39\n\x07Monitor\x12\x17.looprpc.MonitorRequest\x1a\x13.looprpc.SwapStatus0\x01\x12\x42\n\tListSwaps\x12\x19.looprpc.ListSwapsRequest\x1a\x1a.looprpc.ListSwapsResponse\x12\x39\n\x08SwapInfo\x12\x18.looprpc.SwapInfoRequest\x1a\x13.looprpc.SwapStatus\x12@\n\x0cLoopOutTerms\x12\x15.looprpc.TermsRequest\x1a\x19.looprpc.OutTermsResponse\x12@\n\x0cLoopOutQuote\x12\x15.looprpc.QuoteRequest\x1a\x19.looprpc.OutQuoteResponse\x12\x41\n\x0eGetLoopInTerms\x12\x15.looprpc.TermsRequest\x1a\x18.looprpc.InTermsResponse\x12\x41\n\x0eGetLoopInQuote\x12\x15.looprpc.QuoteRequest\x1a\x18.looprpc.InQuoteResponse\x12@\n\rGetLsatTokens\x12\x16.looprpc.TokensRequest\x1a\x17.looprpc.TokensResponse\x12V\n\x12GetLiquidityParams\x12\".looprpc.GetLiquidityParamsRequest\x1a\x1c.looprpc.LiquidityParameters\x12]\n\x12SetLiquidityParams\x12\".looprpc.SetLiquidityParamsRequest\x1a#.looprpc.SetLiquidityParamsResponse\x12K\n\x0cSuggestSwaps\x12\x1c.looprpc.SuggestSwapsRequest\x1a\x1d.looprpc.SuggestSwapsResponseB\'Z%github.com/lightninglabs/loop/looprpcb\x06proto3'
-)
+  serialized_pb=b'\n\x1eloopgrpc/compiled/client.proto\x12\x07looprpc\x1a\x1eloopgrpc/compiled/common.proto\"\xe3\x02\n\x0eLoopOutRequest\x12\x0b\n\x03\x61mt\x18\x01 \x01(\x03\x12\x0c\n\x04\x64\x65st\x18\x02 \x01(\t\x12\x1c\n\x14max_swap_routing_fee\x18\x03 \x01(\x03\x12\x1e\n\x16max_prepay_routing_fee\x18\x04 \x01(\x03\x12\x14\n\x0cmax_swap_fee\x18\x05 \x01(\x03\x12\x16\n\x0emax_prepay_amt\x18\x06 \x01(\x03\x12\x15\n\rmax_miner_fee\x18\x07 \x01(\x03\x12\x1c\n\x10loop_out_channel\x18\x08 \x01(\x04\x42\x02\x18\x01\x12\x19\n\x11outgoing_chan_set\x18\x0b \x03(\x04\x12\x19\n\x11sweep_conf_target\x18\t \x01(\x05\x12\x1a\n\x12htlc_confirmations\x18\r \x01(\x05\x12!\n\x19swap_publication_deadline\x18\n \x01(\x04\x12\r\n\x05label\x18\x0c \x01(\t\x12\x11\n\tinitiator\x18\x0e \x01(\t\"\xe8\x01\n\rLoopInRequest\x12\x0b\n\x03\x61mt\x18\x01 \x01(\x03\x12\x14\n\x0cmax_swap_fee\x18\x02 \x01(\x03\x12\x15\n\rmax_miner_fee\x18\x03 \x01(\x03\x12\x10\n\x08last_hop\x18\x04 \x01(\x0c\x12\x15\n\rexternal_htlc\x18\x05 \x01(\x08\x12\x18\n\x10htlc_conf_target\x18\x06 \x01(\x05\x12\r\n\x05label\x18\x07 \x01(\t\x12\x11\n\tinitiator\x18\x08 \x01(\t\x12\'\n\x0broute_hints\x18\t \x03(\x0b\x32\x12.looprpc.RouteHint\x12\x0f\n\x07private\x18\n \x01(\x08\"\x9b\x01\n\x0cSwapResponse\x12\x0e\n\x02id\x18\x01 \x01(\tB\x02\x18\x01\x12\x10\n\x08id_bytes\x18\x03 \x01(\x0c\x12\x18\n\x0chtlc_address\x18\x02 \x01(\tB\x02\x18\x01\x12\x1b\n\x13htlc_address_np2wsh\x18\x04 \x01(\t\x12\x1a\n\x12htlc_address_p2wsh\x18\x05 \x01(\t\x12\x16\n\x0eserver_message\x18\x06 \x01(\t\"\x10\n\x0eMonitorRequest\"\x86\x03\n\nSwapStatus\x12\x0b\n\x03\x61mt\x18\x01 \x01(\x03\x12\x0e\n\x02id\x18\x02 \x01(\tB\x02\x18\x01\x12\x10\n\x08id_bytes\x18\x0b \x01(\x0c\x12\x1f\n\x04type\x18\x03 \x01(\x0e\x32\x11.looprpc.SwapType\x12!\n\x05state\x18\x04 \x01(\x0e\x32\x12.looprpc.SwapState\x12.\n\x0e\x66\x61ilure_reason\x18\x0e \x01(\x0e\x32\x16.looprpc.FailureReason\x12\x17\n\x0finitiation_time\x18\x05 \x01(\x03\x12\x18\n\x10last_update_time\x18\x06 \x01(\x03\x12\x18\n\x0chtlc_address\x18\x07 \x01(\tB\x02\x18\x01\x12\x1a\n\x12htlc_address_p2wsh\x18\x0c \x01(\t\x12\x1b\n\x13htlc_address_np2wsh\x18\r \x01(\t\x12\x13\n\x0b\x63ost_server\x18\x08 \x01(\x03\x12\x14\n\x0c\x63ost_onchain\x18\t \x01(\x03\x12\x15\n\rcost_offchain\x18\n \x01(\x03\x12\r\n\x05label\x18\x0f \x01(\t\"\x12\n\x10ListSwapsRequest\"7\n\x11ListSwapsResponse\x12\"\n\x05swaps\x18\x01 \x03(\x0b\x32\x13.looprpc.SwapStatus\"\x1d\n\x0fSwapInfoRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\"\x0e\n\x0cTermsRequest\"a\n\x0fInTermsResponse\x12\x17\n\x0fmin_swap_amount\x18\x05 \x01(\x03\x12\x17\n\x0fmax_swap_amount\x18\x06 \x01(\x03J\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03J\x04\x08\x03\x10\x04J\x04\x08\x04\x10\x05J\x04\x08\x07\x10\x08\"\x92\x01\n\x10OutTermsResponse\x12\x17\n\x0fmin_swap_amount\x18\x05 \x01(\x03\x12\x17\n\x0fmax_swap_amount\x18\x06 \x01(\x03\x12\x16\n\x0emin_cltv_delta\x18\x08 \x01(\x05\x12\x16\n\x0emax_cltv_delta\x18\t \x01(\x05J\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03J\x04\x08\x03\x10\x04J\x04\x08\x04\x10\x05J\x04\x08\x07\x10\x08\"\xc6\x01\n\x0cQuoteRequest\x12\x0b\n\x03\x61mt\x18\x01 \x01(\x03\x12\x13\n\x0b\x63onf_target\x18\x02 \x01(\x05\x12\x15\n\rexternal_htlc\x18\x03 \x01(\x08\x12!\n\x19swap_publication_deadline\x18\x04 \x01(\x04\x12\x18\n\x10loop_in_last_hop\x18\x05 \x01(\x0c\x12/\n\x13loop_in_route_hints\x18\x06 \x03(\x0b\x32\x12.looprpc.RouteHint\x12\x0f\n\x07private\x18\x07 \x01(\x08\"z\n\x0fInQuoteResponse\x12\x14\n\x0cswap_fee_sat\x18\x01 \x01(\x03\x12\x1c\n\x14htlc_publish_fee_sat\x18\x03 \x01(\x03\x12\x12\n\ncltv_delta\x18\x05 \x01(\x05\x12\x13\n\x0b\x63onf_target\x18\x06 \x01(\x05J\x04\x08\x02\x10\x03J\x04\x08\x04\x10\x05\"\xa0\x01\n\x10OutQuoteResponse\x12\x14\n\x0cswap_fee_sat\x18\x01 \x01(\x03\x12\x16\n\x0eprepay_amt_sat\x18\x02 \x01(\x03\x12\x1a\n\x12htlc_sweep_fee_sat\x18\x03 \x01(\x03\x12\x19\n\x11swap_payment_dest\x18\x04 \x01(\x0c\x12\x12\n\ncltv_delta\x18\x05 \x01(\x05\x12\x13\n\x0b\x63onf_target\x18\x06 \x01(\x05\"V\n\x0cProbeRequest\x12\x0b\n\x03\x61mt\x18\x01 \x01(\x03\x12\x10\n\x08last_hop\x18\x02 \x01(\x0c\x12\'\n\x0broute_hints\x18\x03 \x03(\x0b\x32\x12.looprpc.RouteHint\"\x0f\n\rProbeResponse\"\x0f\n\rTokensRequest\"4\n\x0eTokensResponse\x12\"\n\x06tokens\x18\x01 \x03(\x0b\x32\x12.looprpc.LsatToken\"\xc8\x01\n\tLsatToken\x12\x15\n\rbase_macaroon\x18\x01 \x01(\x0c\x12\x14\n\x0cpayment_hash\x18\x02 \x01(\x0c\x12\x18\n\x10payment_preimage\x18\x03 \x01(\x0c\x12\x18\n\x10\x61mount_paid_msat\x18\x04 \x01(\x03\x12\x1d\n\x15routing_fee_paid_msat\x18\x05 \x01(\x03\x12\x14\n\x0ctime_created\x18\x06 \x01(\x03\x12\x0f\n\x07\x65xpired\x18\x07 \x01(\x08\x12\x14\n\x0cstorage_name\x18\x08 \x01(\t\"\x1b\n\x19GetLiquidityParamsRequest\"\xd9\x03\n\x13LiquidityParameters\x12%\n\x05rules\x18\x01 \x03(\x0b\x32\x16.looprpc.LiquidityRule\x12\x0f\n\x07\x66\x65\x65_ppm\x18\x10 \x01(\x04\x12$\n\x1csweep_fee_rate_sat_per_vbyte\x18\x02 \x01(\x04\x12\x18\n\x10max_swap_fee_ppm\x18\x03 \x01(\x04\x12\x1b\n\x13max_routing_fee_ppm\x18\x04 \x01(\x04\x12\"\n\x1amax_prepay_routing_fee_ppm\x18\x05 \x01(\x04\x12\x16\n\x0emax_prepay_sat\x18\x06 \x01(\x04\x12\x19\n\x11max_miner_fee_sat\x18\x07 \x01(\x04\x12\x19\n\x11sweep_conf_target\x18\x08 \x01(\x05\x12\x1b\n\x13\x66\x61ilure_backoff_sec\x18\t \x01(\x04\x12\x10\n\x08\x61utoloop\x18\n \x01(\x08\x12\x1b\n\x13\x61utoloop_budget_sat\x18\x0b \x01(\x04\x12!\n\x19\x61utoloop_budget_start_sec\x18\x0c \x01(\x04\x12\x1a\n\x12\x61uto_max_in_flight\x18\r \x01(\x04\x12\x17\n\x0fmin_swap_amount\x18\x0e \x01(\x04\x12\x17\n\x0fmax_swap_amount\x18\x0f \x01(\x04\"\xbb\x01\n\rLiquidityRule\x12\x12\n\nchannel_id\x18\x01 \x01(\x04\x12$\n\tswap_type\x18\x06 \x01(\x0e\x32\x11.looprpc.SwapType\x12\x0e\n\x06pubkey\x18\x05 \x01(\x0c\x12(\n\x04type\x18\x02 \x01(\x0e\x32\x1a.looprpc.LiquidityRuleType\x12\x1a\n\x12incoming_threshold\x18\x03 \x01(\r\x12\x1a\n\x12outgoing_threshold\x18\x04 \x01(\r\"M\n\x19SetLiquidityParamsRequest\x12\x30\n\nparameters\x18\x01 \x01(\x0b\x32\x1c.looprpc.LiquidityParameters\"\x1c\n\x1aSetLiquidityParamsResponse\"\x15\n\x13SuggestSwapsRequest\"W\n\x0c\x44isqualified\x12\x12\n\nchannel_id\x18\x01 \x01(\x04\x12\x0e\n\x06pubkey\x18\x03 \x01(\x0c\x12#\n\x06reason\x18\x02 \x01(\x0e\x32\x13.looprpc.AutoReason\"n\n\x14SuggestSwapsResponse\x12)\n\x08loop_out\x18\x01 \x03(\x0b\x32\x17.looprpc.LoopOutRequest\x12+\n\x0c\x64isqualified\x18\x02 \x03(\x0b\x32\x15.looprpc.Disqualified*%\n\x08SwapType\x12\x0c\n\x08LOOP_OUT\x10\x00\x12\x0b\n\x07LOOP_IN\x10\x01*s\n\tSwapState\x12\r\n\tINITIATED\x10\x00\x12\x15\n\x11PREIMAGE_REVEALED\x10\x01\x12\x12\n\x0eHTLC_PUBLISHED\x10\x02\x12\x0b\n\x07SUCCESS\x10\x03\x12\n\n\x06\x46\x41ILED\x10\x04\x12\x13\n\x0fINVOICE_SETTLED\x10\x05*\xed\x01\n\rFailureReason\x12\x17\n\x13\x46\x41ILURE_REASON_NONE\x10\x00\x12\x1b\n\x17\x46\x41ILURE_REASON_OFFCHAIN\x10\x01\x12\x1a\n\x16\x46\x41ILURE_REASON_TIMEOUT\x10\x02\x12 \n\x1c\x46\x41ILURE_REASON_SWEEP_TIMEOUT\x10\x03\x12%\n!FAILURE_REASON_INSUFFICIENT_VALUE\x10\x04\x12\x1c\n\x18\x46\x41ILURE_REASON_TEMPORARY\x10\x05\x12#\n\x1f\x46\x41ILURE_REASON_INCORRECT_AMOUNT\x10\x06*/\n\x11LiquidityRuleType\x12\x0b\n\x07UNKNOWN\x10\x00\x12\r\n\tTHRESHOLD\x10\x01*\xa6\x03\n\nAutoReason\x12\x17\n\x13\x41UTO_REASON_UNKNOWN\x10\x00\x12\"\n\x1e\x41UTO_REASON_BUDGET_NOT_STARTED\x10\x01\x12\x1a\n\x16\x41UTO_REASON_SWEEP_FEES\x10\x02\x12\x1e\n\x1a\x41UTO_REASON_BUDGET_ELAPSED\x10\x03\x12\x19\n\x15\x41UTO_REASON_IN_FLIGHT\x10\x04\x12\x18\n\x14\x41UTO_REASON_SWAP_FEE\x10\x05\x12\x19\n\x15\x41UTO_REASON_MINER_FEE\x10\x06\x12\x16\n\x12\x41UTO_REASON_PREPAY\x10\x07\x12\x1f\n\x1b\x41UTO_REASON_FAILURE_BACKOFF\x10\x08\x12\x18\n\x14\x41UTO_REASON_LOOP_OUT\x10\t\x12\x17\n\x13\x41UTO_REASON_LOOP_IN\x10\n\x12\x1c\n\x18\x41UTO_REASON_LIQUIDITY_OK\x10\x0b\x12#\n\x1f\x41UTO_REASON_BUDGET_INSUFFICIENT\x10\x0c\x12 \n\x1c\x41UTO_REASON_FEE_INSUFFICIENT\x10\r2\xc2\x07\n\nSwapClient\x12\x39\n\x07LoopOut\x12\x17.looprpc.LoopOutRequest\x1a\x15.looprpc.SwapResponse\x12\x37\n\x06LoopIn\x12\x16.looprpc.LoopInRequest\x1a\x15.looprpc.SwapResponse\x12\x39\n\x07Monitor\x12\x17.looprpc.MonitorRequest\x1a\x13.looprpc.SwapStatus0\x01\x12\x42\n\tListSwaps\x12\x19.looprpc.ListSwapsRequest\x1a\x1a.looprpc.ListSwapsResponse\x12\x39\n\x08SwapInfo\x12\x18.looprpc.SwapInfoRequest\x1a\x13.looprpc.SwapStatus\x12@\n\x0cLoopOutTerms\x12\x15.looprpc.TermsRequest\x1a\x19.looprpc.OutTermsResponse\x12@\n\x0cLoopOutQuote\x12\x15.looprpc.QuoteRequest\x1a\x19.looprpc.OutQuoteResponse\x12\x41\n\x0eGetLoopInTerms\x12\x15.looprpc.TermsRequest\x1a\x18.looprpc.InTermsResponse\x12\x41\n\x0eGetLoopInQuote\x12\x15.looprpc.QuoteRequest\x1a\x18.looprpc.InQuoteResponse\x12\x36\n\x05Probe\x12\x15.looprpc.ProbeRequest\x1a\x16.looprpc.ProbeResponse\x12@\n\rGetLsatTokens\x12\x16.looprpc.TokensRequest\x1a\x17.looprpc.TokensResponse\x12V\n\x12GetLiquidityParams\x12\".looprpc.GetLiquidityParamsRequest\x1a\x1c.looprpc.LiquidityParameters\x12]\n\x12SetLiquidityParams\x12\".looprpc.SetLiquidityParamsRequest\x1a#.looprpc.SetLiquidityParamsResponse\x12K\n\x0cSuggestSwaps\x12\x1c.looprpc.SuggestSwapsRequest\x1a\x1d.looprpc.SuggestSwapsResponseB\'Z%github.com/lightninglabs/loop/looprpcb\x06proto3'
+  ,
+  dependencies=[loopgrpc_dot_compiled_dot_common__pb2.DESCRIPTOR,])
 
 _SWAPTYPE = _descriptor.EnumDescriptor(
   name='SwapType',
@@ -43,8 +45,8 @@ _SWAPTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3178,
-  serialized_end=3215,
+  serialized_start=3504,
+  serialized_end=3541,
 )
 _sym_db.RegisterEnumDescriptor(_SWAPTYPE)
 
@@ -89,8 +91,8 @@ _SWAPSTATE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3217,
-  serialized_end=3332,
+  serialized_start=3543,
+  serialized_end=3658,
 )
 _sym_db.RegisterEnumDescriptor(_SWAPSTATE)
 
@@ -140,8 +142,8 @@ _FAILUREREASON = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3335,
-  serialized_end=3572,
+  serialized_start=3661,
+  serialized_end=3898,
 )
 _sym_db.RegisterEnumDescriptor(_FAILUREREASON)
 
@@ -166,8 +168,8 @@ _LIQUIDITYRULETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3574,
-  serialized_end=3621,
+  serialized_start=3900,
+  serialized_end=3947,
 )
 _sym_db.RegisterEnumDescriptor(_LIQUIDITYRULETYPE)
 
@@ -252,8 +254,8 @@ _AUTOREASON = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3624,
-  serialized_end=4046,
+  serialized_start=3950,
+  serialized_end=4372,
 )
 _sym_db.RegisterEnumDescriptor(_AUTOREASON)
 
@@ -410,8 +412,8 @@ _LOOPOUTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=44,
-  serialized_end=399,
+  serialized_start=76,
+  serialized_end=431,
 )
 
 
@@ -479,6 +481,20 @@ _LOOPINREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='route_hints', full_name='looprpc.LoopInRequest.route_hints', index=8,
+      number=9, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='private', full_name='looprpc.LoopInRequest.private', index=9,
+      number=10, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -491,8 +507,8 @@ _LOOPINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=402,
-  serialized_end=576,
+  serialized_start=434,
+  serialized_end=666,
 )
 
 
@@ -558,8 +574,8 @@ _SWAPRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=579,
-  serialized_end=734,
+  serialized_start=669,
+  serialized_end=824,
 )
 
 
@@ -583,8 +599,8 @@ _MONITORREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=736,
-  serialized_end=752,
+  serialized_start=826,
+  serialized_end=842,
 )
 
 
@@ -713,8 +729,8 @@ _SWAPSTATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=755,
-  serialized_end=1145,
+  serialized_start=845,
+  serialized_end=1235,
 )
 
 
@@ -738,8 +754,8 @@ _LISTSWAPSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1147,
-  serialized_end=1165,
+  serialized_start=1237,
+  serialized_end=1255,
 )
 
 
@@ -770,8 +786,8 @@ _LISTSWAPSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1167,
-  serialized_end=1222,
+  serialized_start=1257,
+  serialized_end=1312,
 )
 
 
@@ -802,8 +818,8 @@ _SWAPINFOREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1224,
-  serialized_end=1253,
+  serialized_start=1314,
+  serialized_end=1343,
 )
 
 
@@ -827,8 +843,8 @@ _TERMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1255,
-  serialized_end=1269,
+  serialized_start=1345,
+  serialized_end=1359,
 )
 
 
@@ -866,8 +882,8 @@ _INTERMSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1271,
-  serialized_end=1368,
+  serialized_start=1361,
+  serialized_end=1458,
 )
 
 
@@ -919,8 +935,8 @@ _OUTTERMSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1371,
-  serialized_end=1517,
+  serialized_start=1461,
+  serialized_end=1607,
 )
 
 
@@ -960,6 +976,27 @@ _QUOTEREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='loop_in_last_hop', full_name='looprpc.QuoteRequest.loop_in_last_hop', index=4,
+      number=5, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='loop_in_route_hints', full_name='looprpc.QuoteRequest.loop_in_route_hints', index=5,
+      number=6, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='private', full_name='looprpc.QuoteRequest.private', index=6,
+      number=7, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -972,8 +1009,8 @@ _QUOTEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1519,
-  serialized_end=1625,
+  serialized_start=1610,
+  serialized_end=1808,
 )
 
 
@@ -1025,8 +1062,8 @@ _INQUOTERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1627,
-  serialized_end=1749,
+  serialized_start=1810,
+  serialized_end=1932,
 )
 
 
@@ -1092,8 +1129,79 @@ _OUTQUOTERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1752,
-  serialized_end=1912,
+  serialized_start=1935,
+  serialized_end=2095,
+)
+
+
+_PROBEREQUEST = _descriptor.Descriptor(
+  name='ProbeRequest',
+  full_name='looprpc.ProbeRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='amt', full_name='looprpc.ProbeRequest.amt', index=0,
+      number=1, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='last_hop', full_name='looprpc.ProbeRequest.last_hop', index=1,
+      number=2, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='route_hints', full_name='looprpc.ProbeRequest.route_hints', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2097,
+  serialized_end=2183,
+)
+
+
+_PROBERESPONSE = _descriptor.Descriptor(
+  name='ProbeResponse',
+  full_name='looprpc.ProbeResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2185,
+  serialized_end=2200,
 )
 
 
@@ -1117,8 +1225,8 @@ _TOKENSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1914,
-  serialized_end=1929,
+  serialized_start=2202,
+  serialized_end=2217,
 )
 
 
@@ -1149,8 +1257,8 @@ _TOKENSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1931,
-  serialized_end=1983,
+  serialized_start=2219,
+  serialized_end=2271,
 )
 
 
@@ -1230,8 +1338,8 @@ _LSATTOKEN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1986,
-  serialized_end=2186,
+  serialized_start=2274,
+  serialized_end=2474,
 )
 
 
@@ -1255,8 +1363,8 @@ _GETLIQUIDITYPARAMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2188,
-  serialized_end=2215,
+  serialized_start=2476,
+  serialized_end=2503,
 )
 
 
@@ -1392,8 +1500,8 @@ _LIQUIDITYPARAMETERS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2218,
-  serialized_end=2691,
+  serialized_start=2506,
+  serialized_end=2979,
 )
 
 
@@ -1413,28 +1521,35 @@ _LIQUIDITYRULE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='pubkey', full_name='looprpc.LiquidityRule.pubkey', index=1,
+      name='swap_type', full_name='looprpc.LiquidityRule.swap_type', index=1,
+      number=6, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='pubkey', full_name='looprpc.LiquidityRule.pubkey', index=2,
       number=5, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=b"",
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='type', full_name='looprpc.LiquidityRule.type', index=2,
+      name='type', full_name='looprpc.LiquidityRule.type', index=3,
       number=2, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='incoming_threshold', full_name='looprpc.LiquidityRule.incoming_threshold', index=3,
+      name='incoming_threshold', full_name='looprpc.LiquidityRule.incoming_threshold', index=4,
       number=3, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='outgoing_threshold', full_name='looprpc.LiquidityRule.outgoing_threshold', index=4,
+      name='outgoing_threshold', full_name='looprpc.LiquidityRule.outgoing_threshold', index=5,
       number=4, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -1452,8 +1567,8 @@ _LIQUIDITYRULE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2694,
-  serialized_end=2843,
+  serialized_start=2982,
+  serialized_end=3169,
 )
 
 
@@ -1484,8 +1599,8 @@ _SETLIQUIDITYPARAMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2845,
-  serialized_end=2922,
+  serialized_start=3171,
+  serialized_end=3248,
 )
 
 
@@ -1509,8 +1624,8 @@ _SETLIQUIDITYPARAMSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2924,
-  serialized_end=2952,
+  serialized_start=3250,
+  serialized_end=3278,
 )
 
 
@@ -1534,8 +1649,8 @@ _SUGGESTSWAPSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2954,
-  serialized_end=2975,
+  serialized_start=3280,
+  serialized_end=3301,
 )
 
 
@@ -1580,8 +1695,8 @@ _DISQUALIFIED = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2977,
-  serialized_end=3064,
+  serialized_start=3303,
+  serialized_end=3390,
 )
 
 
@@ -1619,16 +1734,20 @@ _SUGGESTSWAPSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3066,
-  serialized_end=3176,
+  serialized_start=3392,
+  serialized_end=3502,
 )
 
+_LOOPINREQUEST.fields_by_name['route_hints'].message_type = loopgrpc_dot_compiled_dot_common__pb2._ROUTEHINT
 _SWAPSTATUS.fields_by_name['type'].enum_type = _SWAPTYPE
 _SWAPSTATUS.fields_by_name['state'].enum_type = _SWAPSTATE
 _SWAPSTATUS.fields_by_name['failure_reason'].enum_type = _FAILUREREASON
 _LISTSWAPSRESPONSE.fields_by_name['swaps'].message_type = _SWAPSTATUS
+_QUOTEREQUEST.fields_by_name['loop_in_route_hints'].message_type = loopgrpc_dot_compiled_dot_common__pb2._ROUTEHINT
+_PROBEREQUEST.fields_by_name['route_hints'].message_type = loopgrpc_dot_compiled_dot_common__pb2._ROUTEHINT
 _TOKENSRESPONSE.fields_by_name['tokens'].message_type = _LSATTOKEN
 _LIQUIDITYPARAMETERS.fields_by_name['rules'].message_type = _LIQUIDITYRULE
+_LIQUIDITYRULE.fields_by_name['swap_type'].enum_type = _SWAPTYPE
 _LIQUIDITYRULE.fields_by_name['type'].enum_type = _LIQUIDITYRULETYPE
 _SETLIQUIDITYPARAMSREQUEST.fields_by_name['parameters'].message_type = _LIQUIDITYPARAMETERS
 _DISQUALIFIED.fields_by_name['reason'].enum_type = _AUTOREASON
@@ -1648,6 +1767,8 @@ DESCRIPTOR.message_types_by_name['OutTermsResponse'] = _OUTTERMSRESPONSE
 DESCRIPTOR.message_types_by_name['QuoteRequest'] = _QUOTEREQUEST
 DESCRIPTOR.message_types_by_name['InQuoteResponse'] = _INQUOTERESPONSE
 DESCRIPTOR.message_types_by_name['OutQuoteResponse'] = _OUTQUOTERESPONSE
+DESCRIPTOR.message_types_by_name['ProbeRequest'] = _PROBEREQUEST
+DESCRIPTOR.message_types_by_name['ProbeResponse'] = _PROBERESPONSE
 DESCRIPTOR.message_types_by_name['TokensRequest'] = _TOKENSREQUEST
 DESCRIPTOR.message_types_by_name['TokensResponse'] = _TOKENSRESPONSE
 DESCRIPTOR.message_types_by_name['LsatToken'] = _LSATTOKEN
@@ -1764,6 +1885,20 @@ OutQuoteResponse = _reflection.GeneratedProtocolMessageType('OutQuoteResponse', 
   })
 _sym_db.RegisterMessage(OutQuoteResponse)
 
+ProbeRequest = _reflection.GeneratedProtocolMessageType('ProbeRequest', (_message.Message,), {
+  'DESCRIPTOR' : _PROBEREQUEST,
+  '__module__' : 'loopgrpc.compiled.client_pb2'
+  # @@protoc_insertion_point(class_scope:looprpc.ProbeRequest)
+  })
+_sym_db.RegisterMessage(ProbeRequest)
+
+ProbeResponse = _reflection.GeneratedProtocolMessageType('ProbeResponse', (_message.Message,), {
+  'DESCRIPTOR' : _PROBERESPONSE,
+  '__module__' : 'loopgrpc.compiled.client_pb2'
+  # @@protoc_insertion_point(class_scope:looprpc.ProbeResponse)
+  })
+_sym_db.RegisterMessage(ProbeResponse)
+
 TokensRequest = _reflection.GeneratedProtocolMessageType('TokensRequest', (_message.Message,), {
   'DESCRIPTOR' : _TOKENSREQUEST,
   '__module__' : 'loopgrpc.compiled.client_pb2'
@@ -1856,8 +1991,8 @@ _SWAPCLIENT = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=4049,
-  serialized_end=4955,
+  serialized_start=4375,
+  serialized_end=5337,
   methods=[
   _descriptor.MethodDescriptor(
     name='LoopOut',
@@ -1950,9 +2085,19 @@ _SWAPCLIENT = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
+    name='Probe',
+    full_name='looprpc.SwapClient.Probe',
+    index=9,
+    containing_service=None,
+    input_type=_PROBEREQUEST,
+    output_type=_PROBERESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
     name='GetLsatTokens',
     full_name='looprpc.SwapClient.GetLsatTokens',
-    index=9,
+    index=10,
     containing_service=None,
     input_type=_TOKENSREQUEST,
     output_type=_TOKENSRESPONSE,
@@ -1962,7 +2107,7 @@ _SWAPCLIENT = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetLiquidityParams',
     full_name='looprpc.SwapClient.GetLiquidityParams',
-    index=10,
+    index=11,
     containing_service=None,
     input_type=_GETLIQUIDITYPARAMSREQUEST,
     output_type=_LIQUIDITYPARAMETERS,
@@ -1972,7 +2117,7 @@ _SWAPCLIENT = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetLiquidityParams',
     full_name='looprpc.SwapClient.SetLiquidityParams',
-    index=11,
+    index=12,
     containing_service=None,
     input_type=_SETLIQUIDITYPARAMSREQUEST,
     output_type=_SETLIQUIDITYPARAMSRESPONSE,
@@ -1982,7 +2127,7 @@ _SWAPCLIENT = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SuggestSwaps',
     full_name='looprpc.SwapClient.SuggestSwaps',
-    index=12,
+    index=13,
     containing_service=None,
     input_type=_SUGGESTSWAPSREQUEST,
     output_type=_SUGGESTSWAPSRESPONSE,

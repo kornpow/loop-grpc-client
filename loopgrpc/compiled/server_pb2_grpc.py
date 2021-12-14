@@ -64,6 +64,11 @@ class SwapServerStub(object):
                 request_serializer=loopgrpc_dot_compiled_dot_server__pb2.CancelLoopOutSwapRequest.SerializeToString,
                 response_deserializer=loopgrpc_dot_compiled_dot_server__pb2.CancelLoopOutSwapResponse.FromString,
                 )
+        self.Probe = channel.unary_unary(
+                '/looprpc.SwapServer/Probe',
+                request_serializer=loopgrpc_dot_compiled_dot_server__pb2.ServerProbeRequest.SerializeToString,
+                response_deserializer=loopgrpc_dot_compiled_dot_server__pb2.ServerProbeResponse.FromString,
+                )
 
 
 class SwapServerServicer(object):
@@ -129,6 +134,12 @@ class SwapServerServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Probe(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_SwapServerServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -181,6 +192,11 @@ def add_SwapServerServicer_to_server(servicer, server):
                     servicer.CancelLoopOutSwap,
                     request_deserializer=loopgrpc_dot_compiled_dot_server__pb2.CancelLoopOutSwapRequest.FromString,
                     response_serializer=loopgrpc_dot_compiled_dot_server__pb2.CancelLoopOutSwapResponse.SerializeToString,
+            ),
+            'Probe': grpc.unary_unary_rpc_method_handler(
+                    servicer.Probe,
+                    request_deserializer=loopgrpc_dot_compiled_dot_server__pb2.ServerProbeRequest.FromString,
+                    response_serializer=loopgrpc_dot_compiled_dot_server__pb2.ServerProbeResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -359,5 +375,22 @@ class SwapServer(object):
         return grpc.experimental.unary_unary(request, target, '/looprpc.SwapServer/CancelLoopOutSwap',
             loopgrpc_dot_compiled_dot_server__pb2.CancelLoopOutSwapRequest.SerializeToString,
             loopgrpc_dot_compiled_dot_server__pb2.CancelLoopOutSwapResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Probe(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/looprpc.SwapServer/Probe',
+            loopgrpc_dot_compiled_dot_server__pb2.ServerProbeRequest.SerializeToString,
+            loopgrpc_dot_compiled_dot_server__pb2.ServerProbeResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

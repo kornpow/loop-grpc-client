@@ -1,8 +1,14 @@
 syntax = "proto3";
 
+import "loopgrpc/compiled/common.proto";
+
+// We can't change this to swapserverrpc, it would be a breaking change because
+// the package name is also contained in the HTTP URIs and old clients would
+// call the wrong endpoints. Luckily with the go_package option we can have
+// different golang and RPC package names to fix protobuf namespace conflicts.
 package looprpc;
 
-option go_package = "github.com/lightninglabs/loop/looprpc";
+option go_package = "github.com/lightninglabs/loop/swapserverrpc";
 
 service SwapServer {
     rpc LoopOutTerms (ServerLoopOutTermsRequest) returns (ServerLoopOutTerms);
@@ -29,6 +35,8 @@ service SwapServer {
 
     rpc CancelLoopOutSwap (CancelLoopOutSwapRequest)
         returns (CancelLoopOutSwapResponse);
+
+    rpc Probe (ServerProbeRequest) returns (ServerProbeResponse);
 }
 
 /**
@@ -70,6 +78,10 @@ enum ProtocolVersion {
 
     // The client supports loop out swap cancelation.
     LOOP_OUT_CANCEL = 7;
+
+    // The client is able to ask the server to probe to test inbound
+    // liquidity.
+    PROBE = 8;
 }
 
 message ServerLoopOutRequest {
@@ -201,6 +213,16 @@ message ServerLoopInQuoteRequest {
     /// The swap amount. If zero, a quote for a maximum amt swap will be given.
     uint64 amt = 1;
 
+    // The destination pubkey. Will be used to retrieve cached probed routing
+    // fee.
+    bytes pubkey = 3;
+
+    // The last hop to use. Will be used to retrieve cached probed routing fee.
+    bytes last_hop = 4;
+
+    // Optional route hints to reach the destination through private channels.
+    repeated RouteHint route_hints = 5;
+
     /// The protocol version that the client adheres to.
     ProtocolVersion protocol_version = 2;
 }
@@ -305,6 +327,12 @@ enum ServerSwapState {
     // The client canceled the swap because they could not route the swap
     // payment.
     SERVER_CLIENT_INVOICE_CANCEL = 14;
+
+    /*
+    A loop in swap was rejected because it contained multiple outputs for a
+    single swap.
+    */
+    SERVER_FAILED_MULTIPLE_SWAP_SCRIPTS = 15;
 }
 
 message SubscribeLoopOutUpdatesResponse {
@@ -407,4 +435,26 @@ message CancelLoopOutSwapRequest {
 }
 
 message CancelLoopOutSwapResponse {
+}
+
+message ServerProbeRequest {
+    /// The protocol version that the client adheres to.
+    ProtocolVersion protocol_version = 1;
+
+    // The probe amount.
+    uint64 amt = 2;
+
+    // The target node for the probe.
+    bytes target = 3;
+
+    // Optional last hop to use when probing the client.
+    bytes last_hop = 4;
+
+    /*
+    Optional route hints to reach the destination through private channels.
+    */
+    repeated RouteHint route_hints = 5;
+}
+
+message ServerProbeResponse {
 }

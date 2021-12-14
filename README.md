@@ -72,34 +72,35 @@ import sys
 import re
 import os
 
-pool_dir = Path.home().joinpath("Documents/lightning/loop")
+loop_dir = Path.home().joinpath("Documents/lightning/loop")
 grpc_client_dir = Path.home().joinpath("Documents/lightning/loop-grpc-client")
 
 os.chdir(grpc_client_dir)
 
-if not all([pool_dir.exists(), grpc_client_dir.exists()]):
+if not all([loop_dir.exists(), grpc_client_dir.exists()]):
     print("Error: Double check that the paths exist!")
     sys.exit(1)
 
-for proto in list(pool_dir.rglob("**/*.proto")):
+for proto in list(loop_dir.rglob("**/*.proto")):
     shutil.copy(proto, grpc_client_dir.joinpath("loopgrpc/compiled/"))
     print(f"Copied: {proto.name}")
 
 # Modify auctioneer.proto from auctioneerrpc/auctioneer.proto --> poolgrpc/compiled/auctioneer.proto
-# for proto in list(grpc_client_dir.joinpath("poolgrpc/compiled/").rglob("*.proto")):
-#     with open(proto, 'r+') as f:
-#         text = f.read()
-#         text = re.sub('auctioneerrpc/auctioneer.proto', 'poolgrpc/compiled/auctioneer.proto', text)
-#         f.seek(0)
-#         f.write(text)
-#         f.truncate()
+for proto in list(grpc_client_dir.joinpath("loopgrpc/compiled/").rglob("*.proto")):
+    with open(proto, 'r+') as f:
+        text = f.read()
+        text = re.sub('import "swapserverrpc/common.proto";', 'import "loopgrpc/compiled/common.proto";', text)
+        text = re.sub('import "common.proto";', 'import "loopgrpc/compiled/common.proto";', text)
+        f.seek(0)
+        f.write(text)
+        f.truncate()
 
-protos = list(Path(".").joinpath("poolgrpc/compiled/").glob("*.proto"))
+protos = list(Path(".").joinpath("loopgrpc/compiled/").glob("*.proto"))
 
 args = [
     "-m",
     "grpc_tools.protoc",
-    "--proto_path=poolgrpc/compiled/googleapis:.",
+    "--proto_path=loopgrpc/compiled/googleapis:.",
     "--python_out=.",
     "--grpc_python_out=.",
 ]
@@ -110,13 +111,6 @@ for protofile in protos:
 # Generate the compiled protofiles
 sh.python(args)
 ```
-
-Last Step:
-In File: verrpc_pb2_grpc.py
-Change:
-import verrpc_pb2 as verrpc__pb2
-To:
-from lndgrpc import verrpc_pb2 as verrpc__pb2
 
 ## Deploy to Test-PyPi
 ```bash

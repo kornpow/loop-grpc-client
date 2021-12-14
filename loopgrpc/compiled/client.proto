@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "loopgrpc/compiled/common.proto";
+
 package looprpc;
 
 option go_package = "github.com/lightninglabs/loop/looprpc";
@@ -62,12 +64,18 @@ service SwapClient {
     */
     rpc GetLoopInQuote (QuoteRequest) returns (InQuoteResponse);
 
+    /*
+    Probe asks he sever to probe the route to us to have a better upfront
+    estimate about routing fees when loopin-in.
+    */
+    rpc Probe (ProbeRequest) returns (ProbeResponse);
+
     /* loop: `listauth`
     GetLsatTokens returns all LSAT tokens the daemon ever paid for.
     */
     rpc GetLsatTokens (TokensRequest) returns (TokensResponse);
 
-    /*
+    /* loop: `getparams`
     GetLiquidityParams gets the parameters that the daemon's liquidity manager
     is currently configured with. This may be nil if nothing is configured.
     [EXPERIMENTAL]: endpoint is subject to change.
@@ -75,7 +83,7 @@ service SwapClient {
     rpc GetLiquidityParams (GetLiquidityParamsRequest)
         returns (LiquidityParameters);
 
-    /*
+    /* loop: `setparams`
     SetLiquidityParams sets a new set of parameters for the daemon's liquidity
     manager. Note that the full set of parameters must be provided, because
     this call fully overwrites our existing parameters.
@@ -84,7 +92,7 @@ service SwapClient {
     rpc SetLiquidityParams (SetLiquidityParamsRequest)
         returns (SetLiquidityParamsResponse);
 
-    /*
+    /* loop: `suggestswaps`
     SuggestSwaps returns a list of recommended swaps based on the current
     state of your node's channels and it's liquidity manager parameters.
     Note that only loop out suggestions are currently supported.
@@ -256,6 +264,18 @@ message LoopInRequest {
     triggering the swap (loop CLI, autolooper, LiT UI, other 3rd party UI).
     */
     string initiator = 8;
+
+    /*
+    Optional route hints to reach the destination through private channels.
+    */
+    repeated looprpc.RouteHint route_hints = 9;
+
+    /*
+    Private indicates whether the destination node should be considered
+    private. In which case, loop will generate hophints to assist with
+    probing and payment.
+    */
+    bool private = 10;
 }
 
 message SwapResponse {
@@ -560,6 +580,25 @@ message QuoteRequest {
     lower total swap fee. This only has an effect on loop out quotes.
     */
     uint64 swap_publication_deadline = 4;
+
+    /*
+    Optionally the client can specify the last hop pubkey when requesting a
+    loop-in quote. This is useful to get better off-chain routing fee from the
+    server.
+    */
+    bytes loop_in_last_hop = 5;
+
+    /*
+    Optional route hints to reach the destination through private channels.
+    */
+    repeated looprpc.RouteHint loop_in_route_hints = 6;
+
+    /*
+    Private indicates whether the destination node should be considered
+    private. In which case, loop will generate hophints to assist with
+    probing and payment.
+    */
+    bool private = 7;
 }
 
 message InQuoteResponse {
@@ -623,6 +662,26 @@ message OutQuoteResponse {
     The confirmation target to be used for the sweep of the on-chain HTLC.
     */
     int32 conf_target = 6;
+}
+
+message ProbeRequest {
+    /*
+    The amount to probe.
+    */
+    int64 amt = 1;
+
+    /*
+    Optional last hop of the route to probe.
+    */
+    bytes last_hop = 2;
+
+    /*
+    Optional route hints to reach the destination through private channels.
+    */
+    repeated looprpc.RouteHint route_hints = 3;
+}
+
+message ProbeResponse {
 }
 
 message TokensRequest {
@@ -802,6 +861,9 @@ message LiquidityRule {
     This field may not be set when the pubkey field is set.
     */
     uint64 channel_id = 1;
+
+    // The type of swap that will be dispatched for this rule.
+    SwapType swap_type = 6;
 
     /*
     The public key of the peer that this rule should be applied to. This field

@@ -12,16 +12,18 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from loopgrpc.compiled import common_pb2 as loopgrpc_dot_compiled_dot_common__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='loopgrpc/compiled/server.proto',
   package='looprpc',
   syntax='proto3',
-  serialized_options=b'Z%github.com/lightninglabs/loop/looprpc',
+  serialized_options=b'Z+github.com/lightninglabs/loop/swapserverrpc',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1eloopgrpc/compiled/server.proto\x12\x07looprpc\"\xc7\x01\n\x14ServerLoopOutRequest\x12\x14\n\x0creceiver_key\x18\x01 \x01(\x0c\x12\x11\n\tswap_hash\x18\x02 \x01(\x0c\x12\x0b\n\x03\x61mt\x18\x03 \x01(\x04\x12!\n\x19swap_publication_deadline\x18\x04 \x01(\x03\x12\x32\n\x10protocol_version\x18\x05 \x01(\x0e\x32\x18.looprpc.ProtocolVersion\x12\x0e\n\x06\x65xpiry\x18\x06 \x01(\x05\x12\x12\n\nuser_agent\x18\x07 \x01(\t\"\x85\x01\n\x15ServerLoopOutResponse\x12\x14\n\x0cswap_invoice\x18\x01 \x01(\t\x12\x16\n\x0eprepay_invoice\x18\x02 \x01(\t\x12\x12\n\nsender_key\x18\x03 \x01(\x0c\x12\x12\n\x06\x65xpiry\x18\x04 \x01(\x05\x42\x02\x18\x01\x12\x16\n\x0eserver_message\x18\x05 \x01(\t\"\x8f\x01\n\x19ServerLoopOutQuoteRequest\x12\x0b\n\x03\x61mt\x18\x01 \x01(\x04\x12!\n\x19swap_publication_deadline\x18\x02 \x01(\x03\x12\x32\n\x10protocol_version\x18\x03 \x01(\x0e\x32\x18.looprpc.ProtocolVersion\x12\x0e\n\x06\x65xpiry\x18\x04 \x01(\x05\"\xc2\x01\n\x12ServerLoopOutQuote\x12\x19\n\x11swap_payment_dest\x18\x01 \x01(\t\x12\x10\n\x08swap_fee\x18\x02 \x01(\x03\x12\x19\n\rswap_fee_rate\x18\x03 \x01(\x03\x42\x02\x18\x01\x12\x12\n\nprepay_amt\x18\x04 \x01(\x04\x12\x1b\n\x0fmin_swap_amount\x18\x05 \x01(\x04\x42\x02\x18\x01\x12\x1b\n\x0fmax_swap_amount\x18\x06 \x01(\x04\x42\x02\x18\x01\x12\x16\n\ncltv_delta\x18\x07 \x01(\x05\x42\x02\x18\x01\"O\n\x19ServerLoopOutTermsRequest\x12\x32\n\x10protocol_version\x18\x01 \x01(\x0e\x32\x18.looprpc.ProtocolVersion\"v\n\x12ServerLoopOutTerms\x12\x17\n\x0fmin_swap_amount\x18\x01 \x01(\x04\x12\x17\n\x0fmax_swap_amount\x18\x02 \x01(\x04\x12\x16\n\x0emin_cltv_delta\x18\x03 \x01(\x05\x12\x16\n\x0emax_cltv_delta\x18\x04 \x01(\x05\"\xd0\x01\n\x13ServerLoopInRequest\x12\x12\n\nsender_key\x18\x01 \x01(\x0c\x12\x11\n\tswap_hash\x18\x02 \x01(\x0c\x12\x0b\n\x03\x61mt\x18\x03 \x01(\x04\x12\x14\n\x0cswap_invoice\x18\x04 \x01(\t\x12\x10\n\x08last_hop\x18\x05 \x01(\x0c\x12\x32\n\x10protocol_version\x18\x06 \x01(\x0e\x32\x18.looprpc.ProtocolVersion\x12\x15\n\rprobe_invoice\x18\x07 \x01(\t\x12\x12\n\nuser_agent\x18\x08 \x01(\t\"T\n\x14ServerLoopInResponse\x12\x14\n\x0creceiver_key\x18\x01 \x01(\x0c\x12\x0e\n\x06\x65xpiry\x18\x02 \x01(\x05\x12\x16\n\x0eserver_message\x18\x03 \x01(\t\"[\n\x18ServerLoopInQuoteRequest\x12\x0b\n\x03\x61mt\x18\x01 \x01(\x04\x12\x32\n\x10protocol_version\x18\x02 \x01(\x0e\x32\x18.looprpc.ProtocolVersion\"\x96\x01\n\x19ServerLoopInQuoteResponse\x12\x10\n\x08swap_fee\x18\x01 \x01(\x03\x12\x19\n\rswap_fee_rate\x18\x02 \x01(\x03\x42\x02\x18\x01\x12\x1b\n\x0fmin_swap_amount\x18\x04 \x01(\x04\x42\x02\x18\x01\x12\x1b\n\x0fmax_swap_amount\x18\x05 \x01(\x04\x42\x02\x18\x01\x12\x12\n\ncltv_delta\x18\x06 \x01(\x05\"N\n\x18ServerLoopInTermsRequest\x12\x32\n\x10protocol_version\x18\x01 \x01(\x0e\x32\x18.looprpc.ProtocolVersion\"E\n\x11ServerLoopInTerms\x12\x17\n\x0fmin_swap_amount\x18\x01 \x01(\x04\x12\x17\n\x0fmax_swap_amount\x18\x02 \x01(\x04\"h\n ServerLoopOutPushPreimageRequest\x12\x32\n\x10protocol_version\x18\x01 \x01(\x0e\x32\x18.looprpc.ProtocolVersion\x12\x10\n\x08preimage\x18\x02 \x01(\x0c\"#\n!ServerLoopOutPushPreimageResponse\"`\n\x17SubscribeUpdatesRequest\x12\x32\n\x10protocol_version\x18\x01 \x01(\x0e\x32\x18.looprpc.ProtocolVersion\x12\x11\n\tswap_hash\x18\x02 \x01(\x0c\"`\n\x1fSubscribeLoopOutUpdatesResponse\x12\x14\n\x0ctimestamp_ns\x18\x01 \x01(\x03\x12\'\n\x05state\x18\x02 \x01(\x0e\x32\x18.looprpc.ServerSwapState\"_\n\x1eSubscribeLoopInUpdatesResponse\x12\x14\n\x0ctimestamp_ns\x18\x01 \x01(\x03\x12\'\n\x05state\x18\x02 \x01(\x0e\x32\x18.looprpc.ServerSwapState\"\x94\x01\n\x0bRouteCancel\x12-\n\nroute_type\x18\x01 \x01(\x0e\x32\x19.looprpc.RoutePaymentType\x12&\n\x08\x61ttempts\x18\x02 \x03(\x0b\x32\x14.looprpc.HtlcAttempt\x12.\n\x07\x66\x61ilure\x18\x03 \x01(\x0e\x32\x1d.looprpc.PaymentFailureReason\"%\n\x0bHtlcAttempt\x12\x16\n\x0eremaining_hops\x18\x01 \x01(\r\"\xb7\x01\n\x18\x43\x61ncelLoopOutSwapRequest\x12\x32\n\x10protocol_version\x18\x01 \x01(\x0e\x32\x18.looprpc.ProtocolVersion\x12\x11\n\tswap_hash\x18\x02 \x01(\x0c\x12\x17\n\x0fpayment_address\x18\x03 \x01(\x0c\x12,\n\x0croute_cancel\x18\x05 \x01(\x0b\x32\x14.looprpc.RouteCancelH\x00\x42\r\n\x0b\x63\x61ncel_info\"\x1b\n\x19\x43\x61ncelLoopOutSwapResponse*\xb7\x01\n\x0fProtocolVersion\x12\n\n\x06LEGACY\x10\x00\x12\x12\n\x0eMULTI_LOOP_OUT\x10\x01\x12\x19\n\x15NATIVE_SEGWIT_LOOP_IN\x10\x02\x12\x1a\n\x16PREIMAGE_PUSH_LOOP_OUT\x10\x03\x12\x18\n\x14USER_EXPIRY_LOOP_OUT\x10\x04\x12\x0b\n\x07HTLC_V2\x10\x05\x12\x11\n\rMULTI_LOOP_IN\x10\x06\x12\x13\n\x0fLOOP_OUT_CANCEL\x10\x07*\xd3\x03\n\x0fServerSwapState\x12\x14\n\x10SERVER_INITIATED\x10\x00\x12\x19\n\x15SERVER_HTLC_PUBLISHED\x10\x01\x12\x12\n\x0eSERVER_SUCCESS\x10\x02\x12\x19\n\x15SERVER_FAILED_UNKNOWN\x10\x03\x12\x19\n\x15SERVER_FAILED_NO_HTLC\x10\x04\x12%\n!SERVER_FAILED_INVALID_HTLC_AMOUNT\x10\x05\x12#\n\x1fSERVER_FAILED_OFF_CHAIN_TIMEOUT\x10\x06\x12\x19\n\x15SERVER_FAILED_TIMEOUT\x10\x07\x12\x1f\n\x1bSERVER_FAILED_SWAP_DEADLINE\x10\x08\x12\"\n\x1eSERVER_FAILED_HTLC_PUBLICATION\x10\t\x12\x1c\n\x18SERVER_TIMEOUT_PUBLISHED\x10\n\x12\x1d\n\x19SERVER_UNEXPECTED_FAILURE\x10\x0b\x12\x19\n\x15SERVER_HTLC_CONFIRMED\x10\x0c\x12\x1f\n\x1bSERVER_CLIENT_PREPAY_CANCEL\x10\r\x12 \n\x1cSERVER_CLIENT_INVOICE_CANCEL\x10\x0e*J\n\x10RoutePaymentType\x12\x11\n\rROUTE_UNKNOWN\x10\x00\x12\x10\n\x0cPREPAY_ROUTE\x10\x01\x12\x11\n\rINVOICE_ROUTE\x10\x02*\xf1\x01\n\x14PaymentFailureReason\x12\x1b\n\x17LND_FAILURE_REASON_NONE\x10\x00\x12\x1e\n\x1aLND_FAILURE_REASON_TIMEOUT\x10\x01\x12\x1f\n\x1bLND_FAILURE_REASON_NO_ROUTE\x10\x02\x12\x1c\n\x18LND_FAILURE_REASON_ERROR\x10\x03\x12\x30\n,LND_FAILURE_REASON_INCORRECT_PAYMENT_DETAILS\x10\x04\x12+\n\'LND_FAILURE_REASON_INSUFFICIENT_BALANCE\x10\x05\x32\x8b\x07\n\nSwapServer\x12O\n\x0cLoopOutTerms\x12\".looprpc.ServerLoopOutTermsRequest\x1a\x1b.looprpc.ServerLoopOutTerms\x12O\n\x0eNewLoopOutSwap\x12\x1d.looprpc.ServerLoopOutRequest\x1a\x1e.looprpc.ServerLoopOutResponse\x12l\n\x13LoopOutPushPreimage\x12).looprpc.ServerLoopOutPushPreimageRequest\x1a*.looprpc.ServerLoopOutPushPreimageResponse\x12O\n\x0cLoopOutQuote\x12\".looprpc.ServerLoopOutQuoteRequest\x1a\x1b.looprpc.ServerLoopOutQuote\x12L\n\x0bLoopInTerms\x12!.looprpc.ServerLoopInTermsRequest\x1a\x1a.looprpc.ServerLoopInTerms\x12L\n\rNewLoopInSwap\x12\x1c.looprpc.ServerLoopInRequest\x1a\x1d.looprpc.ServerLoopInResponse\x12T\n\x0bLoopInQuote\x12!.looprpc.ServerLoopInQuoteRequest\x1a\".looprpc.ServerLoopInQuoteResponse\x12g\n\x17SubscribeLoopOutUpdates\x12 .looprpc.SubscribeUpdatesRequest\x1a(.looprpc.SubscribeLoopOutUpdatesResponse0\x01\x12\x65\n\x16SubscribeLoopInUpdates\x12 .looprpc.SubscribeUpdatesRequest\x1a\'.looprpc.SubscribeLoopInUpdatesResponse0\x01\x12Z\n\x11\x43\x61ncelLoopOutSwap\x12!.looprpc.CancelLoopOutSwapRequest\x1a\".looprpc.CancelLoopOutSwapResponseB\'Z%github.com/lightninglabs/loop/looprpcb\x06proto3'
-)
+  serialized_pb=b'\n\x1eloopgrpc/compiled/server.proto\x12\x07looprpc\x1a\x1eloopgrpc/compiled/common.proto\"\xc7\x01\n\x14ServerLoopOutRequest\x12\x14\n\x0creceiver_key\x18\x01 \x01(\x0c\x12\x11\n\tswap_hash\x18\x02 \x01(\x0c\x12\x0b\n\x03\x61mt\x18\x03 \x01(\x04\x12!\n\x19swap_publication_deadline\x18\x04 \x01(\x03\x12\x32\n\x10protocol_version\x18\x05 \x01(\x0e\x32\x18.looprpc.ProtocolVersion\x12\x0e\n\x06\x65xpiry\x18\x06 \x01(\x05\x12\x12\n\nuser_agent\x18\x07 \x01(\t\"\x85\x01\n\x15ServerLoopOutResponse\x12\x14\n\x0cswap_invoice\x18\x01 \x01(\t\x12\x16\n\x0eprepay_invoice\x18\x02 \x01(\t\x12\x12\n\nsender_key\x18\x03 \x01(\x0c\x12\x12\n\x06\x65xpiry\x18\x04 \x01(\x05\x42\x02\x18\x01\x12\x16\n\x0eserver_message\x18\x05 \x01(\t\"\x8f\x01\n\x19ServerLoopOutQuoteRequest\x12\x0b\n\x03\x61mt\x18\x01 \x01(\x04\x12!\n\x19swap_publication_deadline\x18\x02 \x01(\x03\x12\x32\n\x10protocol_version\x18\x03 \x01(\x0e\x32\x18.looprpc.ProtocolVersion\x12\x0e\n\x06\x65xpiry\x18\x04 \x01(\x05\"\xc2\x01\n\x12ServerLoopOutQuote\x12\x19\n\x11swap_payment_dest\x18\x01 \x01(\t\x12\x10\n\x08swap_fee\x18\x02 \x01(\x03\x12\x19\n\rswap_fee_rate\x18\x03 \x01(\x03\x42\x02\x18\x01\x12\x12\n\nprepay_amt\x18\x04 \x01(\x04\x12\x1b\n\x0fmin_swap_amount\x18\x05 \x01(\x04\x42\x02\x18\x01\x12\x1b\n\x0fmax_swap_amount\x18\x06 \x01(\x04\x42\x02\x18\x01\x12\x16\n\ncltv_delta\x18\x07 \x01(\x05\x42\x02\x18\x01\"O\n\x19ServerLoopOutTermsRequest\x12\x32\n\x10protocol_version\x18\x01 \x01(\x0e\x32\x18.looprpc.ProtocolVersion\"v\n\x12ServerLoopOutTerms\x12\x17\n\x0fmin_swap_amount\x18\x01 \x01(\x04\x12\x17\n\x0fmax_swap_amount\x18\x02 \x01(\x04\x12\x16\n\x0emin_cltv_delta\x18\x03 \x01(\x05\x12\x16\n\x0emax_cltv_delta\x18\x04 \x01(\x05\"\xd0\x01\n\x13ServerLoopInRequest\x12\x12\n\nsender_key\x18\x01 \x01(\x0c\x12\x11\n\tswap_hash\x18\x02 \x01(\x0c\x12\x0b\n\x03\x61mt\x18\x03 \x01(\x04\x12\x14\n\x0cswap_invoice\x18\x04 \x01(\t\x12\x10\n\x08last_hop\x18\x05 \x01(\x0c\x12\x32\n\x10protocol_version\x18\x06 \x01(\x0e\x32\x18.looprpc.ProtocolVersion\x12\x15\n\rprobe_invoice\x18\x07 \x01(\t\x12\x12\n\nuser_agent\x18\x08 \x01(\t\"T\n\x14ServerLoopInResponse\x12\x14\n\x0creceiver_key\x18\x01 \x01(\x0c\x12\x0e\n\x06\x65xpiry\x18\x02 \x01(\x05\x12\x16\n\x0eserver_message\x18\x03 \x01(\t\"\xa6\x01\n\x18ServerLoopInQuoteRequest\x12\x0b\n\x03\x61mt\x18\x01 \x01(\x04\x12\x0e\n\x06pubkey\x18\x03 \x01(\x0c\x12\x10\n\x08last_hop\x18\x04 \x01(\x0c\x12\'\n\x0broute_hints\x18\x05 \x03(\x0b\x32\x12.looprpc.RouteHint\x12\x32\n\x10protocol_version\x18\x02 \x01(\x0e\x32\x18.looprpc.ProtocolVersion\"\x96\x01\n\x19ServerLoopInQuoteResponse\x12\x10\n\x08swap_fee\x18\x01 \x01(\x03\x12\x19\n\rswap_fee_rate\x18\x02 \x01(\x03\x42\x02\x18\x01\x12\x1b\n\x0fmin_swap_amount\x18\x04 \x01(\x04\x42\x02\x18\x01\x12\x1b\n\x0fmax_swap_amount\x18\x05 \x01(\x04\x42\x02\x18\x01\x12\x12\n\ncltv_delta\x18\x06 \x01(\x05\"N\n\x18ServerLoopInTermsRequest\x12\x32\n\x10protocol_version\x18\x01 \x01(\x0e\x32\x18.looprpc.ProtocolVersion\"E\n\x11ServerLoopInTerms\x12\x17\n\x0fmin_swap_amount\x18\x01 \x01(\x04\x12\x17\n\x0fmax_swap_amount\x18\x02 \x01(\x04\"h\n ServerLoopOutPushPreimageRequest\x12\x32\n\x10protocol_version\x18\x01 \x01(\x0e\x32\x18.looprpc.ProtocolVersion\x12\x10\n\x08preimage\x18\x02 \x01(\x0c\"#\n!ServerLoopOutPushPreimageResponse\"`\n\x17SubscribeUpdatesRequest\x12\x32\n\x10protocol_version\x18\x01 \x01(\x0e\x32\x18.looprpc.ProtocolVersion\x12\x11\n\tswap_hash\x18\x02 \x01(\x0c\"`\n\x1fSubscribeLoopOutUpdatesResponse\x12\x14\n\x0ctimestamp_ns\x18\x01 \x01(\x03\x12\'\n\x05state\x18\x02 \x01(\x0e\x32\x18.looprpc.ServerSwapState\"_\n\x1eSubscribeLoopInUpdatesResponse\x12\x14\n\x0ctimestamp_ns\x18\x01 \x01(\x03\x12\'\n\x05state\x18\x02 \x01(\x0e\x32\x18.looprpc.ServerSwapState\"\x94\x01\n\x0bRouteCancel\x12-\n\nroute_type\x18\x01 \x01(\x0e\x32\x19.looprpc.RoutePaymentType\x12&\n\x08\x61ttempts\x18\x02 \x03(\x0b\x32\x14.looprpc.HtlcAttempt\x12.\n\x07\x66\x61ilure\x18\x03 \x01(\x0e\x32\x1d.looprpc.PaymentFailureReason\"%\n\x0bHtlcAttempt\x12\x16\n\x0eremaining_hops\x18\x01 \x01(\r\"\xb7\x01\n\x18\x43\x61ncelLoopOutSwapRequest\x12\x32\n\x10protocol_version\x18\x01 \x01(\x0e\x32\x18.looprpc.ProtocolVersion\x12\x11\n\tswap_hash\x18\x02 \x01(\x0c\x12\x17\n\x0fpayment_address\x18\x03 \x01(\x0c\x12,\n\x0croute_cancel\x18\x05 \x01(\x0b\x32\x14.looprpc.RouteCancelH\x00\x42\r\n\x0b\x63\x61ncel_info\"\x1b\n\x19\x43\x61ncelLoopOutSwapResponse\"\xa0\x01\n\x12ServerProbeRequest\x12\x32\n\x10protocol_version\x18\x01 \x01(\x0e\x32\x18.looprpc.ProtocolVersion\x12\x0b\n\x03\x61mt\x18\x02 \x01(\x04\x12\x0e\n\x06target\x18\x03 \x01(\x0c\x12\x10\n\x08last_hop\x18\x04 \x01(\x0c\x12\'\n\x0broute_hints\x18\x05 \x03(\x0b\x32\x12.looprpc.RouteHint\"\x15\n\x13ServerProbeResponse*\xc2\x01\n\x0fProtocolVersion\x12\n\n\x06LEGACY\x10\x00\x12\x12\n\x0eMULTI_LOOP_OUT\x10\x01\x12\x19\n\x15NATIVE_SEGWIT_LOOP_IN\x10\x02\x12\x1a\n\x16PREIMAGE_PUSH_LOOP_OUT\x10\x03\x12\x18\n\x14USER_EXPIRY_LOOP_OUT\x10\x04\x12\x0b\n\x07HTLC_V2\x10\x05\x12\x11\n\rMULTI_LOOP_IN\x10\x06\x12\x13\n\x0fLOOP_OUT_CANCEL\x10\x07\x12\t\n\x05PROBE\x10\x08*\xfc\x03\n\x0fServerSwapState\x12\x14\n\x10SERVER_INITIATED\x10\x00\x12\x19\n\x15SERVER_HTLC_PUBLISHED\x10\x01\x12\x12\n\x0eSERVER_SUCCESS\x10\x02\x12\x19\n\x15SERVER_FAILED_UNKNOWN\x10\x03\x12\x19\n\x15SERVER_FAILED_NO_HTLC\x10\x04\x12%\n!SERVER_FAILED_INVALID_HTLC_AMOUNT\x10\x05\x12#\n\x1fSERVER_FAILED_OFF_CHAIN_TIMEOUT\x10\x06\x12\x19\n\x15SERVER_FAILED_TIMEOUT\x10\x07\x12\x1f\n\x1bSERVER_FAILED_SWAP_DEADLINE\x10\x08\x12\"\n\x1eSERVER_FAILED_HTLC_PUBLICATION\x10\t\x12\x1c\n\x18SERVER_TIMEOUT_PUBLISHED\x10\n\x12\x1d\n\x19SERVER_UNEXPECTED_FAILURE\x10\x0b\x12\x19\n\x15SERVER_HTLC_CONFIRMED\x10\x0c\x12\x1f\n\x1bSERVER_CLIENT_PREPAY_CANCEL\x10\r\x12 \n\x1cSERVER_CLIENT_INVOICE_CANCEL\x10\x0e\x12\'\n#SERVER_FAILED_MULTIPLE_SWAP_SCRIPTS\x10\x0f*J\n\x10RoutePaymentType\x12\x11\n\rROUTE_UNKNOWN\x10\x00\x12\x10\n\x0cPREPAY_ROUTE\x10\x01\x12\x11\n\rINVOICE_ROUTE\x10\x02*\xf1\x01\n\x14PaymentFailureReason\x12\x1b\n\x17LND_FAILURE_REASON_NONE\x10\x00\x12\x1e\n\x1aLND_FAILURE_REASON_TIMEOUT\x10\x01\x12\x1f\n\x1bLND_FAILURE_REASON_NO_ROUTE\x10\x02\x12\x1c\n\x18LND_FAILURE_REASON_ERROR\x10\x03\x12\x30\n,LND_FAILURE_REASON_INCORRECT_PAYMENT_DETAILS\x10\x04\x12+\n\'LND_FAILURE_REASON_INSUFFICIENT_BALANCE\x10\x05\x32\xcf\x07\n\nSwapServer\x12O\n\x0cLoopOutTerms\x12\".looprpc.ServerLoopOutTermsRequest\x1a\x1b.looprpc.ServerLoopOutTerms\x12O\n\x0eNewLoopOutSwap\x12\x1d.looprpc.ServerLoopOutRequest\x1a\x1e.looprpc.ServerLoopOutResponse\x12l\n\x13LoopOutPushPreimage\x12).looprpc.ServerLoopOutPushPreimageRequest\x1a*.looprpc.ServerLoopOutPushPreimageResponse\x12O\n\x0cLoopOutQuote\x12\".looprpc.ServerLoopOutQuoteRequest\x1a\x1b.looprpc.ServerLoopOutQuote\x12L\n\x0bLoopInTerms\x12!.looprpc.ServerLoopInTermsRequest\x1a\x1a.looprpc.ServerLoopInTerms\x12L\n\rNewLoopInSwap\x12\x1c.looprpc.ServerLoopInRequest\x1a\x1d.looprpc.ServerLoopInResponse\x12T\n\x0bLoopInQuote\x12!.looprpc.ServerLoopInQuoteRequest\x1a\".looprpc.ServerLoopInQuoteResponse\x12g\n\x17SubscribeLoopOutUpdates\x12 .looprpc.SubscribeUpdatesRequest\x1a(.looprpc.SubscribeLoopOutUpdatesResponse0\x01\x12\x65\n\x16SubscribeLoopInUpdates\x12 .looprpc.SubscribeUpdatesRequest\x1a\'.looprpc.SubscribeLoopInUpdatesResponse0\x01\x12Z\n\x11\x43\x61ncelLoopOutSwap\x12!.looprpc.CancelLoopOutSwapRequest\x1a\".looprpc.CancelLoopOutSwapResponse\x12\x42\n\x05Probe\x12\x1b.looprpc.ServerProbeRequest\x1a\x1c.looprpc.ServerProbeResponseB-Z+github.com/lightninglabs/loop/swapserverrpcb\x06proto3'
+  ,
+  dependencies=[loopgrpc_dot_compiled_dot_common__pb2.DESCRIPTOR,])
 
 _PROTOCOLVERSION = _descriptor.EnumDescriptor(
   name='ProtocolVersion',
@@ -70,11 +72,16 @@ _PROTOCOLVERSION = _descriptor.EnumDescriptor(
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='PROBE', index=8, number=8,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2461,
-  serialized_end=2644,
+  serialized_start=2755,
+  serialized_end=2949,
 )
 _sym_db.RegisterEnumDescriptor(_PROTOCOLVERSION)
 
@@ -161,11 +168,16 @@ _SERVERSWAPSTATE = _descriptor.EnumDescriptor(
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='SERVER_FAILED_MULTIPLE_SWAP_SCRIPTS', index=15, number=15,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2647,
-  serialized_end=3114,
+  serialized_start=2952,
+  serialized_end=3460,
 )
 _sym_db.RegisterEnumDescriptor(_SERVERSWAPSTATE)
 
@@ -195,8 +207,8 @@ _ROUTEPAYMENTTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3116,
-  serialized_end=3190,
+  serialized_start=3462,
+  serialized_end=3536,
 )
 _sym_db.RegisterEnumDescriptor(_ROUTEPAYMENTTYPE)
 
@@ -241,8 +253,8 @@ _PAYMENTFAILUREREASON = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3193,
-  serialized_end=3434,
+  serialized_start=3539,
+  serialized_end=3780,
 )
 _sym_db.RegisterEnumDescriptor(_PAYMENTFAILUREREASON)
 
@@ -255,6 +267,7 @@ USER_EXPIRY_LOOP_OUT = 4
 HTLC_V2 = 5
 MULTI_LOOP_IN = 6
 LOOP_OUT_CANCEL = 7
+PROBE = 8
 SERVER_INITIATED = 0
 SERVER_HTLC_PUBLISHED = 1
 SERVER_SUCCESS = 2
@@ -270,6 +283,7 @@ SERVER_UNEXPECTED_FAILURE = 11
 SERVER_HTLC_CONFIRMED = 12
 SERVER_CLIENT_PREPAY_CANCEL = 13
 SERVER_CLIENT_INVOICE_CANCEL = 14
+SERVER_FAILED_MULTIPLE_SWAP_SCRIPTS = 15
 ROUTE_UNKNOWN = 0
 PREPAY_ROUTE = 1
 INVOICE_ROUTE = 2
@@ -351,8 +365,8 @@ _SERVERLOOPOUTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=44,
-  serialized_end=243,
+  serialized_start=76,
+  serialized_end=275,
 )
 
 
@@ -411,8 +425,8 @@ _SERVERLOOPOUTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=246,
-  serialized_end=379,
+  serialized_start=278,
+  serialized_end=411,
 )
 
 
@@ -464,8 +478,8 @@ _SERVERLOOPOUTQUOTEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=382,
-  serialized_end=525,
+  serialized_start=414,
+  serialized_end=557,
 )
 
 
@@ -538,8 +552,8 @@ _SERVERLOOPOUTQUOTE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=528,
-  serialized_end=722,
+  serialized_start=560,
+  serialized_end=754,
 )
 
 
@@ -570,8 +584,8 @@ _SERVERLOOPOUTTERMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=724,
-  serialized_end=803,
+  serialized_start=756,
+  serialized_end=835,
 )
 
 
@@ -623,8 +637,8 @@ _SERVERLOOPOUTTERMS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=805,
-  serialized_end=923,
+  serialized_start=837,
+  serialized_end=955,
 )
 
 
@@ -704,8 +718,8 @@ _SERVERLOOPINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=926,
-  serialized_end=1134,
+  serialized_start=958,
+  serialized_end=1166,
 )
 
 
@@ -750,8 +764,8 @@ _SERVERLOOPINRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1136,
-  serialized_end=1220,
+  serialized_start=1168,
+  serialized_end=1252,
 )
 
 
@@ -771,7 +785,28 @@ _SERVERLOOPINQUOTEREQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='protocol_version', full_name='looprpc.ServerLoopInQuoteRequest.protocol_version', index=1,
+      name='pubkey', full_name='looprpc.ServerLoopInQuoteRequest.pubkey', index=1,
+      number=3, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='last_hop', full_name='looprpc.ServerLoopInQuoteRequest.last_hop', index=2,
+      number=4, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='route_hints', full_name='looprpc.ServerLoopInQuoteRequest.route_hints', index=3,
+      number=5, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='protocol_version', full_name='looprpc.ServerLoopInQuoteRequest.protocol_version', index=4,
       number=2, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -789,8 +824,8 @@ _SERVERLOOPINQUOTEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1222,
-  serialized_end=1313,
+  serialized_start=1255,
+  serialized_end=1421,
 )
 
 
@@ -849,8 +884,8 @@ _SERVERLOOPINQUOTERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1316,
-  serialized_end=1466,
+  serialized_start=1424,
+  serialized_end=1574,
 )
 
 
@@ -881,8 +916,8 @@ _SERVERLOOPINTERMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1468,
-  serialized_end=1546,
+  serialized_start=1576,
+  serialized_end=1654,
 )
 
 
@@ -920,8 +955,8 @@ _SERVERLOOPINTERMS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1548,
-  serialized_end=1617,
+  serialized_start=1656,
+  serialized_end=1725,
 )
 
 
@@ -959,8 +994,8 @@ _SERVERLOOPOUTPUSHPREIMAGEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1619,
-  serialized_end=1723,
+  serialized_start=1727,
+  serialized_end=1831,
 )
 
 
@@ -984,8 +1019,8 @@ _SERVERLOOPOUTPUSHPREIMAGERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1725,
-  serialized_end=1760,
+  serialized_start=1833,
+  serialized_end=1868,
 )
 
 
@@ -1023,8 +1058,8 @@ _SUBSCRIBEUPDATESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1762,
-  serialized_end=1858,
+  serialized_start=1870,
+  serialized_end=1966,
 )
 
 
@@ -1062,8 +1097,8 @@ _SUBSCRIBELOOPOUTUPDATESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1860,
-  serialized_end=1956,
+  serialized_start=1968,
+  serialized_end=2064,
 )
 
 
@@ -1101,8 +1136,8 @@ _SUBSCRIBELOOPINUPDATESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1958,
-  serialized_end=2053,
+  serialized_start=2066,
+  serialized_end=2161,
 )
 
 
@@ -1147,8 +1182,8 @@ _ROUTECANCEL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2056,
-  serialized_end=2204,
+  serialized_start=2164,
+  serialized_end=2312,
 )
 
 
@@ -1179,8 +1214,8 @@ _HTLCATTEMPT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2206,
-  serialized_end=2243,
+  serialized_start=2314,
+  serialized_end=2351,
 )
 
 
@@ -1237,8 +1272,8 @@ _CANCELLOOPOUTSWAPREQUEST = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=2246,
-  serialized_end=2429,
+  serialized_start=2354,
+  serialized_end=2537,
 )
 
 
@@ -1262,14 +1297,100 @@ _CANCELLOOPOUTSWAPRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2431,
-  serialized_end=2458,
+  serialized_start=2539,
+  serialized_end=2566,
+)
+
+
+_SERVERPROBEREQUEST = _descriptor.Descriptor(
+  name='ServerProbeRequest',
+  full_name='looprpc.ServerProbeRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='protocol_version', full_name='looprpc.ServerProbeRequest.protocol_version', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='amt', full_name='looprpc.ServerProbeRequest.amt', index=1,
+      number=2, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='target', full_name='looprpc.ServerProbeRequest.target', index=2,
+      number=3, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='last_hop', full_name='looprpc.ServerProbeRequest.last_hop', index=3,
+      number=4, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='route_hints', full_name='looprpc.ServerProbeRequest.route_hints', index=4,
+      number=5, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2569,
+  serialized_end=2729,
+)
+
+
+_SERVERPROBERESPONSE = _descriptor.Descriptor(
+  name='ServerProbeResponse',
+  full_name='looprpc.ServerProbeResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2731,
+  serialized_end=2752,
 )
 
 _SERVERLOOPOUTREQUEST.fields_by_name['protocol_version'].enum_type = _PROTOCOLVERSION
 _SERVERLOOPOUTQUOTEREQUEST.fields_by_name['protocol_version'].enum_type = _PROTOCOLVERSION
 _SERVERLOOPOUTTERMSREQUEST.fields_by_name['protocol_version'].enum_type = _PROTOCOLVERSION
 _SERVERLOOPINREQUEST.fields_by_name['protocol_version'].enum_type = _PROTOCOLVERSION
+_SERVERLOOPINQUOTEREQUEST.fields_by_name['route_hints'].message_type = loopgrpc_dot_compiled_dot_common__pb2._ROUTEHINT
 _SERVERLOOPINQUOTEREQUEST.fields_by_name['protocol_version'].enum_type = _PROTOCOLVERSION
 _SERVERLOOPINTERMSREQUEST.fields_by_name['protocol_version'].enum_type = _PROTOCOLVERSION
 _SERVERLOOPOUTPUSHPREIMAGEREQUEST.fields_by_name['protocol_version'].enum_type = _PROTOCOLVERSION
@@ -1284,6 +1405,8 @@ _CANCELLOOPOUTSWAPREQUEST.fields_by_name['route_cancel'].message_type = _ROUTECA
 _CANCELLOOPOUTSWAPREQUEST.oneofs_by_name['cancel_info'].fields.append(
   _CANCELLOOPOUTSWAPREQUEST.fields_by_name['route_cancel'])
 _CANCELLOOPOUTSWAPREQUEST.fields_by_name['route_cancel'].containing_oneof = _CANCELLOOPOUTSWAPREQUEST.oneofs_by_name['cancel_info']
+_SERVERPROBEREQUEST.fields_by_name['protocol_version'].enum_type = _PROTOCOLVERSION
+_SERVERPROBEREQUEST.fields_by_name['route_hints'].message_type = loopgrpc_dot_compiled_dot_common__pb2._ROUTEHINT
 DESCRIPTOR.message_types_by_name['ServerLoopOutRequest'] = _SERVERLOOPOUTREQUEST
 DESCRIPTOR.message_types_by_name['ServerLoopOutResponse'] = _SERVERLOOPOUTRESPONSE
 DESCRIPTOR.message_types_by_name['ServerLoopOutQuoteRequest'] = _SERVERLOOPOUTQUOTEREQUEST
@@ -1305,6 +1428,8 @@ DESCRIPTOR.message_types_by_name['RouteCancel'] = _ROUTECANCEL
 DESCRIPTOR.message_types_by_name['HtlcAttempt'] = _HTLCATTEMPT
 DESCRIPTOR.message_types_by_name['CancelLoopOutSwapRequest'] = _CANCELLOOPOUTSWAPREQUEST
 DESCRIPTOR.message_types_by_name['CancelLoopOutSwapResponse'] = _CANCELLOOPOUTSWAPRESPONSE
+DESCRIPTOR.message_types_by_name['ServerProbeRequest'] = _SERVERPROBEREQUEST
+DESCRIPTOR.message_types_by_name['ServerProbeResponse'] = _SERVERPROBERESPONSE
 DESCRIPTOR.enum_types_by_name['ProtocolVersion'] = _PROTOCOLVERSION
 DESCRIPTOR.enum_types_by_name['ServerSwapState'] = _SERVERSWAPSTATE
 DESCRIPTOR.enum_types_by_name['RoutePaymentType'] = _ROUTEPAYMENTTYPE
@@ -1458,6 +1583,20 @@ CancelLoopOutSwapResponse = _reflection.GeneratedProtocolMessageType('CancelLoop
   })
 _sym_db.RegisterMessage(CancelLoopOutSwapResponse)
 
+ServerProbeRequest = _reflection.GeneratedProtocolMessageType('ServerProbeRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SERVERPROBEREQUEST,
+  '__module__' : 'loopgrpc.compiled.server_pb2'
+  # @@protoc_insertion_point(class_scope:looprpc.ServerProbeRequest)
+  })
+_sym_db.RegisterMessage(ServerProbeRequest)
+
+ServerProbeResponse = _reflection.GeneratedProtocolMessageType('ServerProbeResponse', (_message.Message,), {
+  'DESCRIPTOR' : _SERVERPROBERESPONSE,
+  '__module__' : 'loopgrpc.compiled.server_pb2'
+  # @@protoc_insertion_point(class_scope:looprpc.ServerProbeResponse)
+  })
+_sym_db.RegisterMessage(ServerProbeResponse)
+
 
 DESCRIPTOR._options = None
 _SERVERLOOPOUTRESPONSE.fields_by_name['expiry']._options = None
@@ -1476,8 +1615,8 @@ _SWAPSERVER = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=3437,
-  serialized_end=4344,
+  serialized_start=3783,
+  serialized_end=4758,
   methods=[
   _descriptor.MethodDescriptor(
     name='LoopOutTerms',
@@ -1576,6 +1715,16 @@ _SWAPSERVER = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_CANCELLOOPOUTSWAPREQUEST,
     output_type=_CANCELLOOPOUTSWAPRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='Probe',
+    full_name='looprpc.SwapServer.Probe',
+    index=10,
+    containing_service=None,
+    input_type=_SERVERPROBEREQUEST,
+    output_type=_SERVERPROBERESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

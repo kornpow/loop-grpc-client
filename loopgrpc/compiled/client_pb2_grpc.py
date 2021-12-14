@@ -62,6 +62,11 @@ class SwapClientStub(object):
                 request_serializer=loopgrpc_dot_compiled_dot_client__pb2.QuoteRequest.SerializeToString,
                 response_deserializer=loopgrpc_dot_compiled_dot_client__pb2.InQuoteResponse.FromString,
                 )
+        self.Probe = channel.unary_unary(
+                '/looprpc.SwapClient/Probe',
+                request_serializer=loopgrpc_dot_compiled_dot_client__pb2.ProbeRequest.SerializeToString,
+                response_deserializer=loopgrpc_dot_compiled_dot_client__pb2.ProbeResponse.FromString,
+                )
         self.GetLsatTokens = channel.unary_unary(
                 '/looprpc.SwapClient/GetLsatTokens',
                 request_serializer=loopgrpc_dot_compiled_dot_client__pb2.TokensRequest.SerializeToString,
@@ -170,6 +175,15 @@ class SwapClientServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Probe(self, request, context):
+        """
+        Probe asks he sever to probe the route to us to have a better upfront
+        estimate about routing fees when loopin-in.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def GetLsatTokens(self, request, context):
         """loop: `listauth`
         GetLsatTokens returns all LSAT tokens the daemon ever paid for.
@@ -179,7 +193,7 @@ class SwapClientServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def GetLiquidityParams(self, request, context):
-        """
+        """loop: `getparams`
         GetLiquidityParams gets the parameters that the daemon's liquidity manager
         is currently configured with. This may be nil if nothing is configured.
         [EXPERIMENTAL]: endpoint is subject to change.
@@ -189,7 +203,7 @@ class SwapClientServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def SetLiquidityParams(self, request, context):
-        """
+        """loop: `setparams`
         SetLiquidityParams sets a new set of parameters for the daemon's liquidity
         manager. Note that the full set of parameters must be provided, because
         this call fully overwrites our existing parameters.
@@ -200,7 +214,7 @@ class SwapClientServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def SuggestSwaps(self, request, context):
-        """
+        """loop: `suggestswaps`
         SuggestSwaps returns a list of recommended swaps based on the current
         state of your node's channels and it's liquidity manager parameters.
         Note that only loop out suggestions are currently supported.
@@ -257,6 +271,11 @@ def add_SwapClientServicer_to_server(servicer, server):
                     servicer.GetLoopInQuote,
                     request_deserializer=loopgrpc_dot_compiled_dot_client__pb2.QuoteRequest.FromString,
                     response_serializer=loopgrpc_dot_compiled_dot_client__pb2.InQuoteResponse.SerializeToString,
+            ),
+            'Probe': grpc.unary_unary_rpc_method_handler(
+                    servicer.Probe,
+                    request_deserializer=loopgrpc_dot_compiled_dot_client__pb2.ProbeRequest.FromString,
+                    response_serializer=loopgrpc_dot_compiled_dot_client__pb2.ProbeResponse.SerializeToString,
             ),
             'GetLsatTokens': grpc.unary_unary_rpc_method_handler(
                     servicer.GetLsatTokens,
@@ -441,6 +460,23 @@ class SwapClient(object):
         return grpc.experimental.unary_unary(request, target, '/looprpc.SwapClient/GetLoopInQuote',
             loopgrpc_dot_compiled_dot_client__pb2.QuoteRequest.SerializeToString,
             loopgrpc_dot_compiled_dot_client__pb2.InQuoteResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Probe(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/looprpc.SwapClient/Probe',
+            loopgrpc_dot_compiled_dot_client__pb2.ProbeRequest.SerializeToString,
+            loopgrpc_dot_compiled_dot_client__pb2.ProbeResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
