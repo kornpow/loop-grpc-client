@@ -69,6 +69,16 @@ class SwapServerStub(object):
                 request_serializer=loopgrpc_dot_compiled_dot_server__pb2.ServerProbeRequest.SerializeToString,
                 response_deserializer=loopgrpc_dot_compiled_dot_server__pb2.ServerProbeResponse.FromString,
                 )
+        self.RecommendRoutingPlugin = channel.unary_unary(
+                '/looprpc.SwapServer/RecommendRoutingPlugin',
+                request_serializer=loopgrpc_dot_compiled_dot_server__pb2.RecommendRoutingPluginReq.SerializeToString,
+                response_deserializer=loopgrpc_dot_compiled_dot_server__pb2.RecommendRoutingPluginRes.FromString,
+                )
+        self.ReportRoutingResult = channel.unary_unary(
+                '/looprpc.SwapServer/ReportRoutingResult',
+                request_serializer=loopgrpc_dot_compiled_dot_server__pb2.ReportRoutingResultReq.SerializeToString,
+                response_deserializer=loopgrpc_dot_compiled_dot_server__pb2.ReportRoutingResultRes.FromString,
+                )
 
 
 class SwapServerServicer(object):
@@ -140,6 +150,18 @@ class SwapServerServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def RecommendRoutingPlugin(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ReportRoutingResult(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_SwapServerServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -197,6 +219,16 @@ def add_SwapServerServicer_to_server(servicer, server):
                     servicer.Probe,
                     request_deserializer=loopgrpc_dot_compiled_dot_server__pb2.ServerProbeRequest.FromString,
                     response_serializer=loopgrpc_dot_compiled_dot_server__pb2.ServerProbeResponse.SerializeToString,
+            ),
+            'RecommendRoutingPlugin': grpc.unary_unary_rpc_method_handler(
+                    servicer.RecommendRoutingPlugin,
+                    request_deserializer=loopgrpc_dot_compiled_dot_server__pb2.RecommendRoutingPluginReq.FromString,
+                    response_serializer=loopgrpc_dot_compiled_dot_server__pb2.RecommendRoutingPluginRes.SerializeToString,
+            ),
+            'ReportRoutingResult': grpc.unary_unary_rpc_method_handler(
+                    servicer.ReportRoutingResult,
+                    request_deserializer=loopgrpc_dot_compiled_dot_server__pb2.ReportRoutingResultReq.FromString,
+                    response_serializer=loopgrpc_dot_compiled_dot_server__pb2.ReportRoutingResultRes.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -392,5 +424,39 @@ class SwapServer(object):
         return grpc.experimental.unary_unary(request, target, '/looprpc.SwapServer/Probe',
             loopgrpc_dot_compiled_dot_server__pb2.ServerProbeRequest.SerializeToString,
             loopgrpc_dot_compiled_dot_server__pb2.ServerProbeResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def RecommendRoutingPlugin(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/looprpc.SwapServer/RecommendRoutingPlugin',
+            loopgrpc_dot_compiled_dot_server__pb2.RecommendRoutingPluginReq.SerializeToString,
+            loopgrpc_dot_compiled_dot_server__pb2.RecommendRoutingPluginRes.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ReportRoutingResult(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/looprpc.SwapServer/ReportRoutingResult',
+            loopgrpc_dot_compiled_dot_server__pb2.ReportRoutingResultReq.SerializeToString,
+            loopgrpc_dot_compiled_dot_server__pb2.ReportRoutingResultRes.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

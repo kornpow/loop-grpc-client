@@ -396,6 +396,12 @@ message SwapStatus {
     // Off-chain routing fees
     int64 cost_offchain = 10;
 
+    // Optional last hop if provided in the loop in request.
+    bytes last_hop = 16;
+
+    // Optional outgoing channel set if provided in the loop out request.
+    repeated uint64 outgoing_chan_set = 17;
+
     // An optional label given to the swap on creation.
     string label = 15;
 }
@@ -848,6 +854,11 @@ message LiquidityParameters {
     specified by the LoopOutTerms endpoint.
     */
     uint64 max_swap_amount = 15;
+
+    /*
+    The confirmation target for loop in on-chain htlcs.
+    */
+    int32 htlc_conf_target = 17;
 }
 
 enum LiquidityRuleType {
@@ -1011,6 +1022,11 @@ message SuggestSwapsResponse {
     The set of recommended loop outs.
     */
     repeated LoopOutRequest loop_out = 1;
+
+    /*
+    The set of recommended loop in swaps
+    */
+    repeated LoopInRequest loop_in = 3;
 
     /*
     Disqualified contains the set of channels that swaps are not recommended

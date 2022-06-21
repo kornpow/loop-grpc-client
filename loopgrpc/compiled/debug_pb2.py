@@ -3,6 +3,7 @@
 # source: loopgrpc/compiled/debug.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
+from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -13,71 +14,12 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor.FileDescriptor(
-  name='loopgrpc/compiled/debug.proto',
-  package='looprpc',
-  syntax='proto3',
-  serialized_options=b'Z%github.com/lightninglabs/loop/looprpc',
-  create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1dloopgrpc/compiled/debug.proto\x12\x07looprpc\"\x16\n\x14\x46orceAutoLoopRequest\"\x17\n\x15\x46orceAutoLoopResponse2W\n\x05\x44\x65\x62ug\x12N\n\rForceAutoLoop\x12\x1d.looprpc.ForceAutoLoopRequest\x1a\x1e.looprpc.ForceAutoLoopResponseB\'Z%github.com/lightninglabs/loop/looprpcb\x06proto3'
-)
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dloopgrpc/compiled/debug.proto\x12\x07looprpc\"\x16\n\x14\x46orceAutoLoopRequest\"\x17\n\x15\x46orceAutoLoopResponse2W\n\x05\x44\x65\x62ug\x12N\n\rForceAutoLoop\x12\x1d.looprpc.ForceAutoLoopRequest\x1a\x1e.looprpc.ForceAutoLoopResponseB\'Z%github.com/lightninglabs/loop/looprpcb\x06proto3')
 
 
 
-
-_FORCEAUTOLOOPREQUEST = _descriptor.Descriptor(
-  name='ForceAutoLoopRequest',
-  full_name='looprpc.ForceAutoLoopRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=42,
-  serialized_end=64,
-)
-
-
-_FORCEAUTOLOOPRESPONSE = _descriptor.Descriptor(
-  name='ForceAutoLoopResponse',
-  full_name='looprpc.ForceAutoLoopResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=66,
-  serialized_end=89,
-)
-
-DESCRIPTOR.message_types_by_name['ForceAutoLoopRequest'] = _FORCEAUTOLOOPREQUEST
-DESCRIPTOR.message_types_by_name['ForceAutoLoopResponse'] = _FORCEAUTOLOOPRESPONSE
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
+_FORCEAUTOLOOPREQUEST = DESCRIPTOR.message_types_by_name['ForceAutoLoopRequest']
+_FORCEAUTOLOOPRESPONSE = DESCRIPTOR.message_types_by_name['ForceAutoLoopResponse']
 ForceAutoLoopRequest = _reflection.GeneratedProtocolMessageType('ForceAutoLoopRequest', (_message.Message,), {
   'DESCRIPTOR' : _FORCEAUTOLOOPREQUEST,
   '__module__' : 'loopgrpc.compiled.debug_pb2'
@@ -92,32 +34,15 @@ ForceAutoLoopResponse = _reflection.GeneratedProtocolMessageType('ForceAutoLoopR
   })
 _sym_db.RegisterMessage(ForceAutoLoopResponse)
 
+_DEBUG = DESCRIPTOR.services_by_name['Debug']
+if _descriptor._USE_C_DESCRIPTORS == False:
 
-DESCRIPTOR._options = None
-
-_DEBUG = _descriptor.ServiceDescriptor(
-  name='Debug',
-  full_name='looprpc.Debug',
-  file=DESCRIPTOR,
-  index=0,
-  serialized_options=None,
-  create_key=_descriptor._internal_create_key,
-  serialized_start=91,
-  serialized_end=178,
-  methods=[
-  _descriptor.MethodDescriptor(
-    name='ForceAutoLoop',
-    full_name='looprpc.Debug.ForceAutoLoop',
-    index=0,
-    containing_service=None,
-    input_type=_FORCEAUTOLOOPREQUEST,
-    output_type=_FORCEAUTOLOOPRESPONSE,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-])
-_sym_db.RegisterServiceDescriptor(_DEBUG)
-
-DESCRIPTOR.services_by_name['Debug'] = _DEBUG
-
+  DESCRIPTOR._options = None
+  DESCRIPTOR._serialized_options = b'Z%github.com/lightninglabs/loop/looprpc'
+  _FORCEAUTOLOOPREQUEST._serialized_start=42
+  _FORCEAUTOLOOPREQUEST._serialized_end=64
+  _FORCEAUTOLOOPRESPONSE._serialized_start=66
+  _FORCEAUTOLOOPRESPONSE._serialized_end=89
+  _DEBUG._serialized_start=91
+  _DEBUG._serialized_end=178
 # @@protoc_insertion_point(module_scope)

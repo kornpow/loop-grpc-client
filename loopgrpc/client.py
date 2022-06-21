@@ -1,101 +1,37 @@
 from .common import BaseClient, looprpc
 from .errors import handle_rpc_errors
 
+from loopgrpc.swapclient import SwapClientRPC
+from loopgrpc.debug import DebugRPC
 
-class LoopClient(BaseClient):
-    @handle_rpc_errors
-    def get_liquidity_params(self):
-        """Unlock encrypted wallet at lnd startup"""
-        request = looprpc.GetLiquidityParamsRequest()
-        response = self._client_stub.GetLiquidityParams(request)
-        return response
 
-    @handle_rpc_errors
-    def get_loop_in_quote(self, amt, conf_target, external_htlc=False):
-        """Unlock encrypted wallet at lnd startup"""
-        request = looprpc.QuoteRequest(
-            amt=amt,
-            conf_target=conf_target,
-            external_htlc=external_htlc
-        )
-        response = self._client_stub.GetLoopInQuote(request)
-        return response
+class LoopClient(SwapClientRPC, DebugRPC):
+    pass
 
-    @handle_rpc_errors
-    def get_loop_in_terms(self):
-        """Unlock encrypted wallet at lnd startup"""
-        request = looprpc.TermsRequest()
-        response = self._client_stub.GetLoopInTerms(request)
-        return response
+def cli():
+    import os
+    import code
+    from pathlib import Path
+    credential_path = os.getenv("LOOP_CRED_PATH", None)
+    if credential_path == None:
+        credential_path = Path("/home/skorn/.pool/mainnet")
+    else:
+        credential_path = Path(credential_path)
 
-    @handle_rpc_errors
-    def get_lsat_tokens(self):
-        """Unlock encrypted wallet at lnd startup"""
-        request = looprpc.TokensRequest()
-        response = self._client_stub.GetLsatTokens(request)
-        return response
+    pool_ip = os.getenv("LOOP_IP")
+    pool_port = os.getenv("LOOP_PORT")
 
-    @handle_rpc_errors
-    def list_swaps(self):
-        """Unlock encrypted wallet at lnd startup"""
-        request = looprpc.ListSwapsRequest()
-        response = self._client_stub.ListSwaps(request)
-        return response
+    mac = str(credential_path.joinpath("loop.macaroon").absolute())
+    tls = str(credential_path.joinpath("tls.cert").absolute())
 
-    @handle_rpc_errors
-    def loop_in(self):
-        """Unlock encrypted wallet at lnd startup"""
-        return "not implemented"
-        request = looprpc.GetLiquidityParamsRequest()
-        response = self._client_stub.GetLiquidityParams(request)
-        return response
+    pool_ip_port = f"{pool_ip}:{pool_port}"
 
-    @handle_rpc_errors
-    def loop_out(self):
-        """Unlock encrypted wallet at lnd startup"""
-        return "not implemented"
-        request = looprpc.GetLiquidityParamsRequest()
-        response = self._client_stub.GetLiquidityParams(request)
-        return response
 
-    @handle_rpc_errors
-    def loop_out_quote(self):
-        """Unlock encrypted wallet at lnd startup"""
-        return "not implemented"
-        request = looprpc.GetLiquidityParamsRequest()
-        response = self._client_stub.GetLiquidityParams(request)
-        return response
+    loop = LoopClient(
+        pool_ip_port,
+        macaroon_filepath=mac,
+        cert_filepath=tls,
+        # no_tls=True
+    )
 
-    @handle_rpc_errors
-    def monitor(self):
-        """Unlock encrypted wallet at lnd startup"""
-        return "not implemented"
-        request = looprpc.GetLiquidityParamsRequest()
-        response = self._client_stub.GetLiquidityParams(request)
-        return response
-
-    @handle_rpc_errors
-    def set_liquidity_params(self):
-        """Unlock encrypted wallet at lnd startup"""
-        return "not implemented"
-        request = looprpc.GetLiquidityParamsRequest()
-        response = self._client_stub.GetLiquidityParams(request)
-        return response
-
-    @handle_rpc_errors
-    def suggest_swaps(self):
-        """Unlock encrypted wallet at lnd startup"""
-        return "not implemented"
-        request = looprpc.GetLiquidityParamsRequest()
-        response = self._client_stub.GetLiquidityParams(request)
-        return response
-
-    @handle_rpc_errors
-    def swap_info(self):
-        """Unlock encrypted wallet at lnd startup"""
-        return "not implemented"
-        request = looprpc.GetLiquidityParamsRequest()
-        response = self._client_stub.GetLiquidityParams(request)
-        return response
-
-        SuggestSwaps
+    code.interact(local=dict(globals(), **locals()))  
