@@ -12,12 +12,13 @@ class SwapClientRPC(BaseClient):
 
 
     @handle_rpc_errors
-    def get_loop_in_quote(self, amt, conf_target, external_htlc=False):
+    def get_loop_in_quote(self, amt, conf_target, external_htlc=False, **kwargs):
         """GetLoopInQuote"""
         request = looprpc.QuoteRequest(
             amt=amt,
             conf_target=conf_target,
-            external_htlc=external_htlc
+            external_htlc=external_htlc,
+            **kwargs
         )
         response = self._client_stub.GetLoopInQuote(request)
         return response
@@ -44,51 +45,50 @@ class SwapClientRPC(BaseClient):
         return response
 
     @handle_rpc_errors
-    def loop_in(self):
+    def loop_in(self, amt, conf_target, external_htlc=False, **kwargs):
         """LoopIn"""
-        return "not implemented"
-        request = looprpc.GetLiquidityParamsRequest()
-        response = self._client_stub.GetLiquidityParams(request)
+        request = looprpc.LoopInRequest(
+            amt=amt,
+            conf_target=conf_target,
+            external_htlc=external_htlc,
+            **kwargs
+        )
+        response = self._client_stub.LoopIn(request)
         return response
 
     @handle_rpc_errors
-    def loop_out(self):
+    def loop_out(self, **kwargs):
         """LoopOut"""
-        return "not implemented"
-        request = looprpc.GetLiquidityParamsRequest()
-        response = self._client_stub.GetLiquidityParams(request)
+        request = looprpc.LoopOutRequest(**kwargs)
+        response = self._client_stub.LoopOut(request)
         return response
 
     @handle_rpc_errors
-    def loop_out_quote(self):
+    def loop_out_quote(self, **kwargs):
         """LoopOutQuote"""
-        return "not implemented"
-        request = looprpc.GetLiquidityParamsRequest()
-        response = self._client_stub.GetLiquidityParams(request)
+        request = looprpc.QuoteRequest(**kwargs)
+        response = self._client_stub.LoopOutQuote(request)
         return response
 
     @handle_rpc_errors
     def loop_out_terms(self):
         """LoopOutTerms"""
-        return "not implemented"
-        request = looprpc.GetLiquidityParamsRequest()
-        response = self._client_stub.GetLiquidityParams(request)
+        request = looprpc.TermsRequest()
+        response = self._client_stub.LoopOutTerms(request)
         return response
 
     @handle_rpc_errors
     def monitor(self):
         """Monitor"""
-        return "not implemented"
-        request = looprpc.GetLiquidityParamsRequest()
-        response = self._client_stub.GetLiquidityParams(request)
+        request = looprpc.MonitorRequest()
+        response = self._client_stub.Monitor(request)
         return response
 
     @handle_rpc_errors
-    def probe(self):
+    def probe(self, **kwargs):
         """Probe"""
-        return "not implemented"
-        request = looprpc.GetLiquidityParamsRequest()
-        response = self._client_stub.GetLiquidityParams(request)
+        request = looprpc.ProbeRequest(**kwargs)
+        response = self._client_stub.Probe(request)
         return response
 
     @handle_rpc_errors
@@ -102,16 +102,14 @@ class SwapClientRPC(BaseClient):
     @handle_rpc_errors
     def suggest_swaps(self):
         """SuggestSwaps"""
-        return "not implemented"
-        request = looprpc.GetLiquidityParamsRequest()
-        response = self._client_stub.GetLiquidityParams(request)
+        request = looprpc.SuggestSwapsRequest()
+        response = self._client_stub.SuggestSwaps(request)
         return response
 
 
     @handle_rpc_errors
-    def swap_info(self):
-        """Unlock encrypted wallet at lnd startup"""
-        return "not implemented"
-        request = looprpc.GetLiquidityParamsRequest()
-        response = self._client_stub.GetLiquidityParams(request)
+    def swap_info(self, id):
+        """SwapInfo"""
+        request = looprpc.SwapInfoRequest(id=id)
+        response = self._client_stub.SwapInfo(request)
         return response
